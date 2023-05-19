@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "645165550417",
+    "project_id": "suryamart-1e2a2",
+    "storage_bucket": "suryamart-1e2a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645165550417:android:7dd80b00ca5881e6f16170",
+        "android_client_info": {
+          "package_name": "com.example.admin_surya_mart_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645165550417-5humh4f7jh1huqvigi9u6n499efumeck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEKam5rQxKPpKxLAXNd-z3xVBjgNWe9DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645165550417-5humh4f7jh1huqvigi9u6n499efumeck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645165550417:android:ead9d13e913ab1bbf16170",
+        "android_client_info": {
+          "package_name": "com.example.surya_mart_v1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645165550417-5humh4f7jh1huqvigi9u6n499efumeck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEKam5rQxKPpKxLAXNd-z3xVBjgNWe9DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645165550417-5humh4f7jh1huqvigi9u6n499efumeck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
