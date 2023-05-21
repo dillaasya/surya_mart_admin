@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: const Color(0xff025ab4),
           elevation: 0,
           title: const Text(
-            'Admin Panel',
+            'Dashboard',
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
           ),

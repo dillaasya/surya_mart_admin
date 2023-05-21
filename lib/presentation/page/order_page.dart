@@ -104,34 +104,38 @@ class _OrderPageState extends State<OrderPage> {
                                       ),
                                     ),
                                     const SizedBox(width: 8),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${first['productName']}',
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w300),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Rp ${first['price']} ',
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w300),
-                                            ),
-                                            Text(
-                                              'x${first['qty']}',
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w300),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${first['productName']}',
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w300),
+                                            overflow: TextOverflow.clip,
+                                            maxLines: 1,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Rp ${first['price']} ',
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w300),
+                                              ),
+                                              Text(
+                                                'x${first['qty']}',
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w300),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -356,34 +360,38 @@ class _OrderPageState extends State<OrderPage> {
                                       ),
                                     ),
                                     const SizedBox(width: 8),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          '${first['productName']}',
-                                          style: GoogleFonts.poppins(
-                                              fontWeight: FontWeight.w300),
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              'Rp ${first['price']} ',
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w300),
-                                            ),
-                                            Text(
-                                              'x${first['qty']}',
-                                              style: GoogleFonts.poppins(
-                                                  fontWeight: FontWeight.w300),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            '${first['productName']}',
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w300),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.clip,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                'Rp ${first['price']} ',
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w300),
+                                              ),
+                                              Text(
+                                                'x${first['qty']}',
+                                                style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w300),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
