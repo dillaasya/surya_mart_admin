@@ -13,7 +13,7 @@
    <application
         android:label="Admin Suryamart"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/admin">
         <activity
             android:name=".MainActivity"
             android:exported="true"
