@@ -65,57 +65,48 @@ class _AddProductToCategoryState extends State<AddProductToCategory> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-              actionsAlignment: MainAxisAlignment.center,
-              title: Text(
-                "Perhatian",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            "Are you sure you want to exit the app?",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
               ),
-              content: Text(
-                "Apakah anda yakin ingin kembali? Data yang sudah ada tidak akan disimpan",
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                "Yes",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
               ),
-              actions: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    emptySelectedProduct();
-                    Navigator.of(context).pop(true);
-                  },
-                  child: Text(
-                    "Ya",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                "No",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                  child: Text(
-                    "Tidak",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ));
+              ),
+            ),
+          ],
+        ));
   }
 
   Future<AggregateQuerySnapshot> countProductInCategory() async {

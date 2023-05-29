@@ -126,7 +126,7 @@ class _ArticlePageState extends State<ArticlePage> {
               MaterialPageRoute(builder: (context) => const AddArticle()),
             );
           },
-          tooltip: 'Increment',
+          tooltip: 'Add New',
           child: const Icon(Icons.add),
         ),
       ),

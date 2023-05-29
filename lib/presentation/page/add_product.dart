@@ -4,6 +4,7 @@ import 'package:admin_surya_mart_v1/data/model/category_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -114,58 +115,48 @@ class _AddProductState extends State<AddProduct> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-              actionsAlignment: MainAxisAlignment.center,
-              title: Text(
-                "Perhatian",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            "Are you sure you want to exit the app?",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
               ),
-              content: Text(
-                "Apakah anda yakin ingin kembali? Data yang sudah ada tidak akan disimpan",
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                "Yes",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
               ),
-              actions: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    _imagePath = null;
-                    category = null;
-                    Navigator.of(context).pop(true);
-                  },
-                  child: Text(
-                    "Ya",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                "No",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                  child: Text(
-                    "Tidak",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ));
+              ),
+            ),
+          ],
+        ));
   }
 
   @override
@@ -253,7 +244,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Nama Produk',
+                              'Product name',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -265,9 +256,9 @@ class _AddProductState extends State<AddProduct> {
                                   return null;
                                 } else if (value.length < 5 &&
                                     value.isNotEmpty) {
-                                  return 'Nama produk anda terlalu singkat!';
+                                  return 'Your product name is too short!';
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -308,7 +299,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Deskripsi Produk',
+                              'Description',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -319,7 +310,7 @@ class _AddProductState extends State<AddProduct> {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -361,7 +352,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Harga',
+                              'Price',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -372,7 +363,17 @@ class _AddProductState extends State<AddProduct> {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
+                                }
+                              },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(7),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (val){
+                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                  stockController.text = val.substring(1);
+                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -414,7 +415,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Jumlah Stok',
+                              'Stock',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -425,7 +426,17 @@ class _AddProductState extends State<AddProduct> {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
+                                }
+                              },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (val){
+                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                  stockController.text = val.substring(1);
+                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -466,7 +477,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Berat Produk (gr/ml)',
+                              'Weight (gr/ml)',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -477,7 +488,17 @@ class _AddProductState extends State<AddProduct> {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
+                                }
+                              },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (val){
+                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                  stockController.text = val.substring(1);
+                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -518,7 +539,7 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Kategori',
+                              'Category',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -606,7 +627,7 @@ class _AddProductState extends State<AddProduct> {
                               } else if (snapshot.connectionState ==
                                   ConnectionState.active) {
                                 return const Center(
-                                  child: Text('Ups ada yang salah nih'),
+                                  child: Text('Ups there is something wrong'),
                                 );
                               } else if (snapshot.connectionState ==
                                   ConnectionState.none) {

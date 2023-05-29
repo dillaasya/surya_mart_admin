@@ -17,191 +17,246 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  Future<bool?> _onBackPressed() async {
+    return showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            "Are you sure you want to exit the app?",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                "Yes",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                "No",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: const Color(0xff0B607E),
-          elevation: 0,
-          title: const Text(
-            'Dashboard',
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
-          ),
+      child: WillPopScope(
+        onWillPop: () async {
+          final shouldPop = await _onBackPressed();
+          return shouldPop ?? false;
+        },
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: const Color(0xff0B607E),
+            elevation: 0,
+            title: const Text(
+              'Dashboard',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white, fontSize: 18),
+            ),
 
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 4,
-                  crossAxisSpacing: 4,
-                  primary: false,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const CustomerPage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.people_outline),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Customers',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: GridView.count(
+                    shrinkWrap: true,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 4,
+                    crossAxisSpacing: 4,
+                    primary: false,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const CustomerPage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.people_outline),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Customers',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const ReviewPage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.star_rounded),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Reviews',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const ReviewPage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.star_rounded),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Reviews',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => const OrderPage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.menu_open_rounded),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Orders',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => const OrderPage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.menu_open_rounded),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Orders',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const ProductPage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(
-                                Icons.production_quantity_limits_rounded),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Products',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const ProductPage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                  Icons.production_quantity_limits_rounded),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Products',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const CategoryPage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.category_outlined),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Categories',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const CategoryPage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.category_outlined),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Categories',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => const ArticlePage()));
-                      },
-                      child: Card(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.newspaper_rounded),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              'Articles',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const ArticlePage()));
+                        },
+                        child: Card(
+                          elevation: 2,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.newspaper_rounded),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Text(
+                                'Articles',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

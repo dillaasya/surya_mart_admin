@@ -65,63 +65,52 @@ void dispose(){
 }
 
 
-Future<bool?> _onBackPressed() async {
+  Future<bool?> _onBackPressed() async {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-
-              actionsAlignment: MainAxisAlignment.center,
-              title: Text(
-                "Perhatian",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            "Are you sure you want to exit the app?",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
               ),
-              content: Text(
-                "Apakah anda yakin ingin kembali? Data yang sudah ada tidak akan disimpan",
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                "Yes",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
               ),
-              actions: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    _imagePath = null;
-                    category = null;
-                    Navigator.of(context).pop(true);
-                  },
-                  child: Text(
-                    "Ya",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                "No",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                  child: Text(
-                    "Tidak",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ));
+              ),
+            ),
+          ],
+        ));
   }
 
   getImageFromGallery() async {
@@ -250,7 +239,7 @@ Widget gambarSebelumnyaAda() {
                 height: 100,
                 width: 100,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: ClipRRect(
@@ -473,7 +462,7 @@ Widget gambarSebelumnyaAda() {
                               ? gambarSebelumnyaAda()
                               : gambarSebelumnyaKosong(),
                           Text(
-                            'Nama Produk',
+                            'Product name',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
@@ -485,9 +474,9 @@ Widget gambarSebelumnyaAda() {
                                   return null;
                                 } else if (value.length < 5 &&
                                     value.isNotEmpty) {
-                                  return 'Nama produk anda terlalu singkat!';
+                                  return 'Your product name is too short!';
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -528,7 +517,7 @@ Widget gambarSebelumnyaAda() {
                             ),
                           ),
                           Text(
-                            'Deskripsi',
+                            'Description',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
@@ -539,14 +528,13 @@ Widget gambarSebelumnyaAda() {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
                               controller: descriptionController,
                               maxLines: 7,
                               decoration: InputDecoration(
-
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -582,18 +570,18 @@ Widget gambarSebelumnyaAda() {
                             ),
                           ),
                           Text(
-                            'Harga',
+                            'Price',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 20),
+                            padding: const EdgeInsets.only(top: 10, bottom: 20),
                             child: TextFormField(
                               validator: (value) {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -635,7 +623,7 @@ Widget gambarSebelumnyaAda() {
                             ),
                           ),
                           Text(
-                            'Stok',
+                            'Stock',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
@@ -646,7 +634,7 @@ Widget gambarSebelumnyaAda() {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -687,7 +675,7 @@ Widget gambarSebelumnyaAda() {
                             ),
                           ),
                           Text(
-                            'Berat dalam gr/ml',
+                            'Weight (gr/ml)',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
@@ -698,7 +686,7 @@ Widget gambarSebelumnyaAda() {
                                 if (value!.isNotEmpty) {
                                   return null;
                                 } else {
-                                  return 'Tidak boleh kosong!';
+                                  return 'It can\'t be empty!';
                                 }
                               },
                               style: GoogleFonts.poppins(),
@@ -739,7 +727,7 @@ Widget gambarSebelumnyaAda() {
                             ),
                           ),
                           Text(
-                            'Kategori',
+                            'Category',
                             style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w300),
                           ),
@@ -759,7 +747,7 @@ Widget gambarSebelumnyaAda() {
                                   child: DropdownButtonFormField<String>(
                                     icon: Padding(
                                       padding:
-                                          const EdgeInsets.only(right: 16.0),
+                                      const EdgeInsets.only(right: 16.0),
                                       child: Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.black.withOpacity(0.25),
@@ -767,11 +755,11 @@ Widget gambarSebelumnyaAda() {
                                       ),
                                     ),
                                     decoration: InputDecoration(
-
+                                      //labelText: "Kategori",
                                       border: InputBorder.none,
                                       focusedBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(18.0),
+                                        BorderRadius.circular(18.0),
                                         borderSide: const BorderSide(
                                           color: Colors.deepOrangeAccent,
                                           width: 1.0,
@@ -779,7 +767,7 @@ Widget gambarSebelumnyaAda() {
                                       ),
                                       enabledBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(18.0),
+                                        BorderRadius.circular(18.0),
                                         borderSide: const BorderSide(
                                           color: Colors.black,
                                           width: 1.0,
@@ -787,7 +775,7 @@ Widget gambarSebelumnyaAda() {
                                       ),
                                       errorBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(18.0),
+                                        BorderRadius.circular(18.0),
                                         borderSide: const BorderSide(
                                           color: Colors.red,
                                           width: 1.0,
@@ -795,7 +783,7 @@ Widget gambarSebelumnyaAda() {
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
                                         borderRadius:
-                                            BorderRadius.circular(18.0),
+                                        BorderRadius.circular(18.0),
                                         borderSide: const BorderSide(
                                           color: Colors.red,
                                           width: 1.0,
@@ -814,10 +802,10 @@ Widget gambarSebelumnyaAda() {
                                     items: x
                                         ?.map(
                                           (e) => DropdownMenuItem<String>(
-                                            value: e.name,
-                                            child: Text(e.name),
-                                          ),
-                                        )
+                                        value: e.name,
+                                        child: Text(e.name, style: GoogleFonts.poppins(fontWeight: FontWeight.w300),),
+                                      ),
+                                    )
                                         .toList(),
                                   ),
                                 );
@@ -826,41 +814,56 @@ Widget gambarSebelumnyaAda() {
                                 return const Text('EROR');
                               } else if (snapshot.connectionState ==
                                   ConnectionState.active) {
-                                return const Text('GATAU LAGI DAH');
+                                return const Center(
+                                  child: Text('Ups there is something wrong'),
+                                );
+                              } else if (snapshot.connectionState ==
+                                  ConnectionState.none) {
+                                return const Text('Eror');
                               } else {
                                 var x = snapshot.data;
                                 var y = x?.map((e) => e.name) ?? '';
-                                return Text('TERAKHIR $y');
+                                return Text('value : $y');
                               }
                             },
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 15),
-                            child: ElevatedButton(
-                                style: ButtonStyle(
-                                    padding: MaterialStateProperty.all(
-                                        const EdgeInsets.only(
-                                            top: 18, bottom: 18)),
-                                    minimumSize: MaterialStateProperty.all<Size>(
-                                        const Size(350, 0)),
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.deepOrangeAccent),
-                                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(18.0),
-                                            side: const BorderSide(
-                                                color: Colors.deepOrangeAccent)))),
-                                child: const Text(
-                                  'Simpan',
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                      style: ButtonStyle(
+                                          padding: MaterialStateProperty.all(
+                                              const EdgeInsets.only(
+                                                  top: 18, bottom: 18)),
+                                          backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              const Color(0XFFFFC33A)),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                  BorderRadius.circular(
+                                                      18.0),
+                                                  side: const BorderSide(color: Color(0XFFFFC33A))))),
+                                      child: Text(
+                                        'Save',
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      onPressed: () {
+                                        if (_formKeyValue.currentState!
+                                            .validate()) {
+                                          saveEdit();
+                                        }
+                                      }),
                                 ),
-                                onPressed: () {
-                                  if (_formKeyValue.currentState!.validate()) {
-                                    saveEdit();
-                                  }
-                                }),
-                          )
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),

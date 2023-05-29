@@ -24,56 +24,48 @@ class _AddArticleState extends State<AddArticle> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-              actionsAlignment: MainAxisAlignment.center,
-              title: Text(
-                "Perhatian",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black,
-                ),
-                textAlign: TextAlign.center,
+          actionsAlignment: MainAxisAlignment.center,
+          content: Text(
+            "Are you sure you want to exit the app?",
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w300,
+              color: Colors.black,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          actions: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
               ),
-              content: Text(
-                "Apakah anda yakin ingin kembali? Data yang sudah ada tidak akan disimpan",
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              child: Text(
+                "Yes",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
-                textAlign: TextAlign.center,
               ),
-              actions: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                  },
-                  child: Text(
-                    "Ya",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:  const Color(0xff0B607E),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+              child: Text(
+                "No",
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w300,
+                  color: Colors.white,
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  const Color(0xff0B607E),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                  child: Text(
-                    "Tidak",
-                    style: GoogleFonts.poppins(
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
-            ));
+              ),
+            ),
+          ],
+        ));
   }
 
   _uploadArticle() {
@@ -141,7 +133,7 @@ class _AddArticleState extends State<AddArticle> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Judul Artikel',
+                              'Title',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -154,16 +146,14 @@ class _AddArticleState extends State<AddArticle> {
                                     return null;
                                   } else if (value.length < 5 &&
                                       value.isNotEmpty) {
-                                    return 'Nama kategori anda terlalu singkat!';
+                                    return 'Your title is too short!';
                                   } else {
-                                    return 'Tidak boleh kosong!';
+                                    return 'It can\'t be empty!';
                                   }
                                 },
                                 style: GoogleFonts.poppins(),
                                 controller: titleController,
                                 decoration: InputDecoration(
-                                  /* label: Text('Judul'),
-                                  hintText: "Judul artikel", */
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     borderSide: const BorderSide(
@@ -198,7 +188,7 @@ class _AddArticleState extends State<AddArticle> {
                               ),
                             ),
                             Text(
-                              'Ringkasan Artikel',
+                              'Summary',
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w300),
                             ),
@@ -212,16 +202,14 @@ class _AddArticleState extends State<AddArticle> {
                                     return null;
                                   } else if (value.length < 5 &&
                                       value.isNotEmpty) {
-                                    return 'Nama kategori anda terlalu singkat!';
+                                    return 'The summary is too short!';
                                   } else {
-                                    return 'Tidak boleh kosong!';
+                                    return 'It can\'t be empty!';
                                   }
                                 },
                                 style: GoogleFonts.poppins(),
                                 controller: overviewController,
                                 decoration: InputDecoration(
-                                  /* label: Text('Overview'),
-                                  hintText: "Sinopsis artikel", */
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     borderSide: const BorderSide(
@@ -269,16 +257,14 @@ class _AddArticleState extends State<AddArticle> {
                                     return null;
                                   } else if (value.length < 5 &&
                                       value.isNotEmpty) {
-                                    return 'Nama kategori anda terlalu singkat!';
+                                    return 'Please enter a valid link!';
                                   } else {
-                                    return 'Tidak boleh kosong!';
+                                    return 'It can\'t be empty!';
                                   }
                                 },
                                 style: GoogleFonts.poppins(),
                                 controller: linkController,
                                 decoration: InputDecoration(
-                                  /* label: Text('Link'),
-                                  hintText: "Link artikel", */
                                   focusedBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     borderSide: const BorderSide(

@@ -133,57 +133,70 @@ class _DetailPageState extends State<DetailPage> {
                             padding: const EdgeInsets.all(20),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Category',
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text(x?['category'],
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ],
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text('Category',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500,
+
+                                          ),
+                                      maxLines: 1,
+                                        overflow: TextOverflow.clip,
+                                      ),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(x?['category'],
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Text('Stock',
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text((x?['stock']).toString(),
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ],
+                                SizedBox(width: 4,),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      Text('Stock',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text((x?['stock']).toString(),
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  ),
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text('Weight',
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500,
-                                        )),
-                                    const SizedBox(
-                                      height: 8,
-                                    ),
-                                    Text('${x?['weight']} gr/ml',
-                                        style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w300,
-                                        )),
-                                  ],
+                                SizedBox(width: 4,),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text('Weight',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text('${x?['weight']} gr/ml',
+                                          style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
