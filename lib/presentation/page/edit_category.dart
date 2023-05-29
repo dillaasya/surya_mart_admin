@@ -44,6 +44,9 @@ class _EditCategoryState extends State<EditCategory> {
               ),
               actions: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
@@ -56,6 +59,9 @@ class _EditCategoryState extends State<EditCategory> {
                   ),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },
@@ -94,9 +100,11 @@ class _EditCategoryState extends State<EditCategory> {
                 (widget.category!.data() as Map<String, dynamic>)["name"])
         .get()
         .then(
-          (value) => value.docs.forEach((element) {
-            updateCategoryProduct(element.id);
-          }),
+          (value) {
+             for (var element in value.docs) {
+               updateCategoryProduct(element.id);
+             }
+          }
         )
         .whenComplete(() => category.doc(id).update({
               'name': newName,
@@ -152,7 +160,7 @@ class _EditCategoryState extends State<EditCategory> {
                   backgroundColor: Colors.white,
                   iconTheme: const IconThemeData(color: Colors.black),
                   elevation: 0,
-                  title: Text('Add New Category',
+                  title: Text('Edit Category',
                       style: GoogleFonts.poppins(
                           fontWeight: FontWeight.w500,
                           color: Colors.black,

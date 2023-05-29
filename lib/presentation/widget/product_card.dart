@@ -28,7 +28,7 @@ class ProductCard extends StatelessWidget {
                 borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(14), bottom: Radius.circular(14)),
                 child: (ds!.data() as Map<String, dynamic>)["image"] == null
-                    ? const Icon(Icons.photo_library_outlined)
+                    ? const Icon(Icons.image_not_supported_outlined)
                     : Image.network(
                         (ds?.data() as Map<String, dynamic>)["image"] ?? '',
                         fit: BoxFit.scaleDown,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DetailOrder extends StatefulWidget {
@@ -58,7 +59,7 @@ class _DetailOrderState extends State<DetailOrder> {
                   Container(
                     decoration: const BoxDecoration(
                         border: Border(
-                          top: BorderSide(width: 5, color: Colors.blue),
+                          top: BorderSide(width: 5, color:  Color(0xff0B607E)),
                         ),
                         color: Colors.white),
                     child: Padding(
@@ -220,47 +221,78 @@ class _DetailOrderState extends State<DetailOrder> {
                           color: Colors.white,
                           child: Padding(
                             padding: const EdgeInsets.all(4),
-                            child: ExpansionTile(
-                              title: Text(
-                                'Ulasan',
-                                style: GoogleFonts.poppins(
-                                    fontWeight: FontWeight.w500),
-                              ),
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, bottom: 16),
-                                  child: StreamBuilder(
-                                    stream: FirebaseFirestore.instance
-                                        .collection('reviews')
-                                        .where('idOrder', isEqualTo: x.id)
-                                        .snapshots(),
-                                    builder: (context, snapshot) {
-                                      var x = snapshot.data?.docs.first;
-                                      if (snapshot.connectionState ==
-                                          ConnectionState.waiting) {
-                                        return const Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      } else if (snapshot.connectionState ==
-                                          ConnectionState.active) {
-                                        if (snapshot.data!.docs.isNotEmpty) {
-                                          return Text(
-                                            x?.data()['review'],
-                                            style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w300),
-                                          );
-                                        } else {
-                                          return const Text('review kosong');
-                                        }
-                                      } else {
-                                        return const Text(
-                                            'eror data produk item nya');
-                                      }
-                                    },
+                            child: Theme(
+                              data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                              child: ExpansionTile(
+
+                                iconColor: Colors.black,
+                                expandedAlignment: Alignment.topLeft,
+                                title: Text(
+                                  'Ulasan',
+                                  style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w500,
+                                  color: Colors.black,
                                   ),
                                 ),
-                              ],
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 16, right: 16, bottom: 16),
+                                    child: StreamBuilder(
+                                      stream: FirebaseFirestore.instance
+                                          .collection('reviews')
+                                          .where('idOrder', isEqualTo: x.id)
+                                          .snapshots(),
+                                      builder: (context, snapshot) {
+                                        var x = snapshot.data?.docs.first;
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        } else if (snapshot.connectionState ==
+                                            ConnectionState.active) {
+                                          if (snapshot.data!.docs.isNotEmpty) {
+                                            return Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: [
+                                                RatingBar.builder(
+                                                  ignoreGestures: true,
+                                                  initialRating: x!['rate'],
+                                                  direction: Axis.horizontal,
+                                                  allowHalfRating: true,
+                                                  itemCount: 5,
+                                                  itemSize: 25,
+                                                  itemBuilder: (context, _) => const Icon(
+                                                    Icons.star,
+                                                    color: Colors.amber,
+                                                  ),
+                                                  onRatingUpdate: (double value) {
+                                                    null;
+                                                  },
+                                                ),
+                                                const SizedBox(height: 4,),
+                                                Text(
+                                                  x.data()['review'],
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight: FontWeight.w300),
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                              ],
+                                            );
+                                          } else {
+                                            return const Text('review kosong');
+                                          }
+                                        } else {
+                                          return const Text(
+                                              'eror data produk item nya');
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         )

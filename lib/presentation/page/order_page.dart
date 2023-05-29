@@ -80,7 +80,7 @@ class _OrderPageState extends State<OrderPage> {
                                       x.data()['statusOrder'],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.blue),
+                                          color:  const Color(0xff0B607E),),
                                     ),
                                   ],
                                 ),
@@ -224,7 +224,7 @@ class _OrderPageState extends State<OrderPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          color: Colors.blue.shade200,
+                                          color:  const Color(0xff0B607E),
                                         ),
                                         height: 50,
                                         child: Row(
@@ -236,7 +236,7 @@ class _OrderPageState extends State<OrderPage> {
                                             Text(
                                               'Kirimkan Pesanan',
                                               style: GoogleFonts.poppins(
-                                                  color: Colors.grey.shade800,
+                                                  color: Colors.white,
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -336,7 +336,7 @@ class _OrderPageState extends State<OrderPage> {
                                       x.data()['statusOrder'],
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w500,
-                                          color: Colors.blue),
+                                          color:  const Color(0xff0B607E),),
                                     ),
                                   ],
                                 ),
@@ -480,7 +480,7 @@ class _OrderPageState extends State<OrderPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          color: Colors.blue.shade200,
+                                          color:  const Color(0xff0B607E),
                                         ),
                                         height: 50,
                                         child: Row(
@@ -492,7 +492,7 @@ class _OrderPageState extends State<OrderPage> {
                                             Text(
                                               'Kirimkan Pesanan',
                                               style: GoogleFonts.poppins(
-                                                  color: Colors.grey.shade800,
+                                                  color: Colors.white,
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -551,6 +551,7 @@ class _OrderPageState extends State<OrderPage> {
             },
             scrolledUnderElevation: 2.0,
             bottom: TabBar(
+              indicatorColor:  const Color(0xff0B607E),
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
               isScrollable: true,

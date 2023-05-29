@@ -42,16 +42,17 @@ class CustomerPage extends StatelessWidget {
                             width: 60,
                             height: 60,
                             decoration: BoxDecoration(
-                              color: Colors.grey,
+                              color: Colors.grey.shade300,
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(50),
                               child: x.data()['profilePicture'] == ''
                                   ? Container(
-                                      color: Colors.grey,
+                                      color: Colors.grey.shade300,
+                                child: const Icon(Icons.image_not_supported_outlined),
                                     )
-                                  : Image.network(x.data()['profilePicture']),
+                                  : Image.network(x.data()['profilePicture'], fit: BoxFit.cover,),
                             ),
                           ),
                           const SizedBox(

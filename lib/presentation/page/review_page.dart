@@ -22,7 +22,10 @@ class ReviewPage extends StatelessWidget {
                   fontSize: 16)),
         ),
         body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('reviews').snapshots(),
+          stream: FirebaseFirestore.instance
+              .collection('reviews')
+          .orderBy('dateCreated', descending: true)
+              .snapshots(),
           builder: (context, snapshot) {
             //print('nilai uid sekaang : ${Auth().currentUser!.uid}');
             if (snapshot.connectionState == ConnectionState.waiting) {
@@ -113,6 +116,7 @@ class ReviewPage extends StatelessWidget {
                                         ),
                                       ),
                                       RatingBar.builder(
+                                        ignoreGestures: true,
                                         initialRating: x['rate'],
                                         direction: Axis.horizontal,
                                         allowHalfRating: true,

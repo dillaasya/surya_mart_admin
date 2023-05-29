@@ -1,4 +1,5 @@
 import 'package:admin_surya_mart_v1/presentation/page/add_product.dart';
+import 'package:admin_surya_mart_v1/presentation/page/detail_page.dart';
 import 'package:admin_surya_mart_v1/presentation/page/edit_product.dart';
 import 'package:admin_surya_mart_v1/presentation/widget/product_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -53,43 +54,56 @@ class _ProductPageState extends State<ProductPage> {
                       itemBuilder: (context, index) {
                         var ds = snapshot.data?.docs[index];
                         return Slidable(
-                          endActionPane:
-                              ActionPane(motion: const ScrollMotion(), children: [
-                            SlidableAction(
-                              onPressed: (context) {
+                          endActionPane: ActionPane(
+                              motion: const ScrollMotion(),
+                              children: [
+                                SlidableAction(
+                                  onPressed: (context) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              EditProduct(ds)),
+                                    );
+                                  },
+                                  backgroundColor: const Color(0xFF7BC043),
+                                  foregroundColor: Colors.white,
+                                  icon: Icons.edit,
+                                  label: 'Edit',
+                                ),
+                                SlidableAction(
+                                  onPressed: (context) {
+                                    setState(() {
+                                      if ((ds!.data() as Map<String,
+                                              dynamic>)["image"] !=
+                                          null) {
+                                        onDeleteImage((ds.data() as Map<
+                                                String, dynamic>)["image"]
+                                            .toString());
+                                        onDeleteCollection(ds.id);
+                                      } else {
+                                        onDeleteCollection(ds.id);
+                                      }
+                                    });
+                                  },
+                                  backgroundColor: Colors.redAccent,
+                                  foregroundColor: Colors.white,
+                                  icon: Icons.delete,
+                                  label: 'Delete',
+                                ),
+                              ]),
+                          child: InkWell(
+                              onTap: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => EditProduct(ds)),
+                                      builder: (context) => DetailPage(
+                                          idProduct: ds!.id,
+                                          stockProduct: ds['stock'],
+                                          category: ds['category'])),
                                 );
                               },
-                              backgroundColor: const Color(0xFF7BC043),
-                              foregroundColor: Colors.white,
-                              icon: Icons.edit,
-                              label: 'Edit',
-                            ),
-                            SlidableAction(
-                              onPressed: (context) {
-                                setState(() {
-                                  if ((ds!.data()
-                                          as Map<String, dynamic>)["image"] !=
-                                      null) {
-                                    onDeleteImage((ds.data()
-                                            as Map<String, dynamic>)["image"]
-                                        .toString());
-                                    onDeleteCollection(ds.id);
-                                  } else {
-                                    onDeleteCollection(ds.id);
-                                  }
-                                });
-                              },
-                              backgroundColor: Colors.redAccent,
-                              foregroundColor: Colors.white,
-                              icon: Icons.delete,
-                              label: 'Delete',
-                            ),
-                          ]),
-                          child: ProductCard(ds: ds),
+                              child: ProductCard(ds: ds),),
                         );
                       });
                 } else {
@@ -104,6 +118,7 @@ class _ProductPageState extends State<ProductPage> {
               MaterialPageRoute(builder: (context) => const AddProduct()),
             );
           },
+          backgroundColor: const Color(0xff0B607E),
           tooltip: 'Increment',
           child: const Icon(Icons.add),
         ),

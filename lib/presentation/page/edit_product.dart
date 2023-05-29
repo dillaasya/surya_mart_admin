@@ -69,6 +69,7 @@ Future<bool?> _onBackPressed() async {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
+
               actionsAlignment: MainAxisAlignment.center,
               title: Text(
                 "Perhatian",
@@ -88,6 +89,9 @@ Future<bool?> _onBackPressed() async {
               ),
               actions: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     _imagePath = null;
                     category = null;
@@ -102,6 +106,9 @@ Future<bool?> _onBackPressed() async {
                   ),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },
@@ -486,8 +493,7 @@ Widget gambarSebelumnyaAda() {
                               style: GoogleFonts.poppins(),
                               controller: nameController,
                               decoration: InputDecoration(
-                                labelText: "Nama",
-                                hintText: "Nama produk",
+
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -540,8 +546,7 @@ Widget gambarSebelumnyaAda() {
                               controller: descriptionController,
                               maxLines: 7,
                               decoration: InputDecoration(
-                                labelText: "Deskripsi",
-                                hintText: "Deskripsi produk",
+
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -594,8 +599,7 @@ Widget gambarSebelumnyaAda() {
                               style: GoogleFonts.poppins(),
                               controller: priceController,
                               decoration: InputDecoration(
-                                labelText: "Harga",
-                                hintText: "Harga produk",
+
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(

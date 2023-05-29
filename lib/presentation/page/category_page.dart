@@ -39,28 +39,17 @@ class _CategoryProductState extends State<CategoryPage> {
     }
 
     void onDeleteCollection(String id, String categoryName) async {
-      await category.doc(id).delete().whenComplete(() => product
-          .where('category', isEqualTo: categoryName)
-          .get()
-          .then((value) => value.docs.forEach((element) {
-                updateCategoryProduct(element.id);
-              })));
+      await category.doc(id).delete().whenComplete(
+            () => product.where('category', isEqualTo: categoryName).get().then(
+                  (value) {
 
-      /*await product.where('category', isEqualTo: categoryName)
-          .get()
-          .then((value) =>
-      value.docs.forEach((element) {updateCategoryProduct(element.id);}));*/
+                    for (var element in value.docs) {
+                      updateCategoryProduct(element.id);
+                    }
+                  }
+                ),
+          );
     }
-
-    /*Future<AggregateQuerySnapshot> countProductInCategory(
-        String categoryName) async {
-      var countQuery = await product
-          .where('category', isEqualTo: categoryName)
-          .count()
-          .get();
-      print('Hasil : ${countQuery.count}');
-      return countQuery;
-    }*/
 
     return SafeArea(
       child: Scaffold(
@@ -169,6 +158,7 @@ class _CategoryProductState extends State<CategoryPage> {
                 }
               }),
           floatingActionButton: FloatingActionButton(
+            backgroundColor: const Color(0xff0B607E),
             onPressed: () {
               Navigator.push(
                 context,

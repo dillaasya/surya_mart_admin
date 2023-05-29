@@ -41,6 +41,9 @@ class _AddCategoryState extends State<AddCategory> {
               ),
               actions: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
@@ -53,6 +56,9 @@ class _AddCategoryState extends State<AddCategory> {
                   ),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },

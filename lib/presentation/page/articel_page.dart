@@ -119,6 +119,7 @@ class _ArticlePageState extends State<ArticlePage> {
               }
             }),
         floatingActionButton: FloatingActionButton(
+          backgroundColor:  const Color(0xff0B607E),
           onPressed: () {
             Navigator.push(
               context,

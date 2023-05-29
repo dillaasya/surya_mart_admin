@@ -43,6 +43,9 @@ class _AddArticleState extends State<AddArticle> {
               ),
               actions: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
@@ -55,6 +58,9 @@ class _AddArticleState extends State<AddArticle> {
                   ),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },

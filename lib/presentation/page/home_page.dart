@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xff025ab4),
+          backgroundColor: const Color(0xff0B607E),
           elevation: 0,
           title: const Text(
             'Dashboard',

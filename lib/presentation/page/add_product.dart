@@ -133,6 +133,9 @@ class _AddProductState extends State<AddProduct> {
               ),
               actions: [
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     _imagePath = null;
                     category = null;
@@ -147,6 +150,9 @@ class _AddProductState extends State<AddProduct> {
                   ),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor:  const Color(0xff0B607E),
+                  ),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },
@@ -603,12 +609,12 @@ class _AddProductState extends State<AddProduct> {
                                   child: Text('Ups ada yang salah nih'),
                                 );
                               } else if (snapshot.connectionState ==
-                                  ConnectionState.values) {
+                                  ConnectionState.none) {
                                 return const Text('Eror');
                               } else {
                                 var x = snapshot.data;
                                 var y = x?.map((e) => e.name) ?? '';
-                                return Text('TERAKHIR $y');
+                                return Text('value : $y');
                               }
                             },
                           ),
