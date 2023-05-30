@@ -40,14 +40,14 @@ class _CategoryProductState extends State<CategoryPage> {
 
     void onDeleteCollection(String id, String categoryName) async {
       await category.doc(id).delete().whenComplete(
-            () => product.where('category', isEqualTo: categoryName).get().then(
-                  (value) {
-
-                    for (var element in value.docs) {
-                      updateCategoryProduct(element.id);
-                    }
-                  }
-                ),
+            () => product
+                .where('category', isEqualTo: categoryName)
+                .get()
+                .then((value) {
+              for (var element in value.docs) {
+                updateCategoryProduct(element.id);
+              }
+            }),
           );
     }
 
@@ -71,88 +71,103 @@ class _CategoryProductState extends State<CategoryPage> {
                 if (snapshot.connectionState == ConnectionState.none) {
                   return const Icon(Icons.hourglass_empty_rounded);
                 } else if (snapshot.connectionState == ConnectionState.active) {
-                  return ListView.builder(
-                      padding: const EdgeInsets.all(8),
-                      itemCount: snapshot.data?.docs.length,
-                      itemBuilder: (context, index) {
-                        var ds = snapshot.data?.docs[index];
+                  if (snapshot.data!.docs.isNotEmpty) {
+                    return ListView.builder(
+                        padding: const EdgeInsets.all(8),
+                        itemCount: snapshot.data?.docs.length,
+                        itemBuilder: (context, index) {
+                          var ds = snapshot.data?.docs[index];
 
-                        return Card(
-                          child: Slidable(
-                            endActionPane: ActionPane(
-                                motion: const ScrollMotion(),
-                                children: [
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditCategory(ds),
-                                        ),
-                                      );
-                                    },
-                                    backgroundColor: const Color(0xFF7BC043),
-                                    foregroundColor: Colors.white,
-                                    icon: Icons.edit,
-                                    label: 'Edit',
-                                  ),
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      onDeleteCollection(
-                                          ds!.id,
-                                          (ds.data()
-                                              as Map<String, dynamic>)["name"]);
-                                    },
-                                    backgroundColor: Colors.redAccent,
-                                    foregroundColor: Colors.white,
-                                    icon: Icons.delete,
-                                    label: 'Delete',
-                                  ),
-                                ]),
-                            child: StreamBuilder<QuerySnapshot>(
-                              stream: product
-                                  .where('category',
-                                      isEqualTo: (ds!.data()
-                                          as Map<String, dynamic>)["name"])
-                                  .snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.active) {
-                                  return ListTile(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProductInCategoryPage(
-                                            catName: (ds.data() as Map<String,
-                                                dynamic>)["name"],
-                                            idCategory: ds.id,
+                          return Card(
+                            child: Slidable(
+                              endActionPane: ActionPane(
+                                  motion: const ScrollMotion(),
+                                  children: [
+                                    SlidableAction(
+                                      onPressed: (context) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                EditCategory(ds),
                                           ),
-                                        ),
-                                      );
-                                    },
-                                    title: Text(
-                                      '${(ds.data() as Map<String, dynamic>)["name"]}',
-                                      overflow: TextOverflow.ellipsis,
-                                      style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500),
+                                        );
+                                      },
+                                      backgroundColor: const Color(0xFF7BC043),
+                                      foregroundColor: Colors.white,
+                                      icon: Icons.edit,
+                                      label: 'Edit',
                                     ),
-                                    subtitle: Text(
-                                      '${snapshot.data!.docs.length} produk',
-                                      style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w300),
+                                    SlidableAction(
+                                      onPressed: (context) {
+                                        onDeleteCollection(
+                                            ds!.id,
+                                            (ds.data() as Map<String, dynamic>)[
+                                                "name"]);
+                                      },
+                                      backgroundColor: Colors.redAccent,
+                                      foregroundColor: Colors.white,
+                                      icon: Icons.delete,
+                                      label: 'Delete',
                                     ),
-                                  );
-                                } else {
-                                  return const CircularProgressIndicator();
-                                }
-                              },
+                                  ]),
+                              child: StreamBuilder<QuerySnapshot>(
+                                stream: product
+                                    .where('category',
+                                        isEqualTo: (ds!.data()
+                                            as Map<String, dynamic>)["name"])
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.active) {
+                                    return ListTile(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProductInCategoryPage(
+                                              catName: (ds.data() as Map<String,
+                                                  dynamic>)["name"],
+                                              idCategory: ds.id,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      title: Text(
+                                        '${(ds.data() as Map<String, dynamic>)["name"]}',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      subtitle: Text(
+                                        '${snapshot.data!.docs.length} produk',
+                                        style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w300),
+                                      ),
+                                    );
+                                  } else {
+                                    return const CircularProgressIndicator();
+                                  }
+                                },
+                              ),
                             ),
+                          );
+                        });
+                  } else {
+                    return Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Center(
+                        child: Text(
+                          'You haven\'t added category yet! Click the icon in the bottom-right corner to add a new category',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w400,
                           ),
-                        );
-                      });
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  }
                 } else {
                   return const Center(child: CircularProgressIndicator());
                 }

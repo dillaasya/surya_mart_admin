@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddCategory extends StatefulWidget {
@@ -147,6 +148,11 @@ class _AddCategoryState extends State<AddCategory> {
                                     return 'It can\'t be empty!';
                                   }
                                 },
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(RegExp('[a-zA-Z|\\ ]')),
+                                  LengthLimitingTextInputFormatter(25),
+                                ],
+
                                 style: GoogleFonts.poppins(),
                                 controller: nameController,
                                 decoration: InputDecoration(

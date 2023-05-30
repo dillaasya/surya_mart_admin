@@ -4,6 +4,7 @@ import 'package:admin_surya_mart_v1/data/model/category_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -479,6 +480,9 @@ Widget gambarSebelumnyaAda() {
                                   return 'It can\'t be empty!';
                                 }
                               },
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z|\\ ]')),
+                              ],
                               style: GoogleFonts.poppins(),
                               controller: nameController,
                               decoration: InputDecoration(
@@ -584,10 +588,21 @@ Widget gambarSebelumnyaAda() {
                                   return 'It can\'t be empty!';
                                 }
                               },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(7),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (val){
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    priceController.text = val.substring(1);
+                                    priceController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
+                                }
+                              },
                               style: GoogleFonts.poppins(),
                               controller: priceController,
                               decoration: InputDecoration(
-
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -636,6 +651,19 @@ Widget gambarSebelumnyaAda() {
                                 } else {
                                   return 'It can\'t be empty!';
                                 }
+                              },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              onChanged: (val){
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    stockController.text = val.substring(1);
+                                    stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
+                                }
+
                               },
                               style: GoogleFonts.poppins(),
                               controller: stockController,
@@ -688,6 +716,19 @@ Widget gambarSebelumnyaAda() {
                                 } else {
                                   return 'It can\'t be empty!';
                                 }
+                              },
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(4),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              onChanged: (val){
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    weightController.text = val.substring(1);
+                                    weightController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
+                                }
+
                               },
                               style: GoogleFonts.poppins(),
                               controller: weightController,

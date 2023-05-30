@@ -234,7 +234,7 @@ class _OrderPageState extends State<OrderPage> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'Kirimkan Pesanan',
+                                              'Deliver Order',
                                               style: GoogleFonts.poppins(
                                                   color: Colors.white,
                                                   fontSize: 15,

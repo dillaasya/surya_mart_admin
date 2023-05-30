@@ -261,6 +261,9 @@ class _AddProductState extends State<AddProduct> {
                                   return 'It can\'t be empty!';
                                 }
                               },
+                              inputFormatters: [
+                                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z|\\ ]')),
+                              ],
                               style: GoogleFonts.poppins(),
                               controller: nameController,
                               decoration: InputDecoration(
@@ -371,15 +374,16 @@ class _AddProductState extends State<AddProduct> {
                                 FilteringTextInputFormatter.digitsOnly
                               ],
                               onChanged: (val){
-                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
-                                  stockController.text = val.substring(1);
-                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    stockController.text = val.substring(1);
+                                    stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
                                 }
                               },
                               style: GoogleFonts.poppins(),
                               controller: priceController,
                               decoration: InputDecoration(
-                               
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -434,10 +438,13 @@ class _AddProductState extends State<AddProduct> {
                                 FilteringTextInputFormatter.digitsOnly
                               ],
                               onChanged: (val){
-                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
-                                  stockController.text = val.substring(1);
-                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    stockController.text = val.substring(1);
+                                    stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
                                 }
+
                               },
                               style: GoogleFonts.poppins(),
                               controller: stockController,
@@ -493,12 +500,14 @@ class _AddProductState extends State<AddProduct> {
                               },
                               inputFormatters: [
                                 LengthLimitingTextInputFormatter(4),
-                                FilteringTextInputFormatter.digitsOnly
+                                FilteringTextInputFormatter.digitsOnly,
                               ],
                               onChanged: (val){
-                                if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
-                                  stockController.text = val.substring(1);
-                                  stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                if (val.length > 0) {
+                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                                    weightController.text = val.substring(1);
+                                    weightController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                  }
                                 }
                               },
                               style: GoogleFonts.poppins(),

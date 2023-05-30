@@ -52,34 +52,56 @@ class _ArticlePageState extends State<ArticlePage> {
                           return InkWell(
                             onTap: followLink,
                             child: Slidable(
-                              endActionPane:
-                                  ActionPane(motion: const ScrollMotion(), children: [
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              EditArticle(ds)),
-                                    );
-                                  },
-                                  backgroundColor: const Color(0xFF7BC043),
-                                  foregroundColor: Colors.white,
-                                  icon: Icons.edit,
-                                  label: 'Edit',
-                                ),
-                                SlidableAction(
-                                  onPressed: (context) {
-                                    setState(() {
-                                      onDeleteCollection(ds.id);
-                                    });
-                                  },
-                                  backgroundColor: Colors.redAccent,
-                                  foregroundColor: Colors.white,
-                                  icon: Icons.delete,
-                                  label: 'Delete',
-                                ),
-                              ]),
+                              endActionPane: ActionPane(
+                                  motion: const ScrollMotion(),
+                                  children: [
+                                    SlidableAction(
+                                      onPressed: (context) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditArticle(ds)),
+                                        );
+                                      },
+                                      backgroundColor: const Color(0xFF7BC043),
+                                      foregroundColor: Colors.white,
+                                      icon: Icons.edit,
+                                      label: 'Edit',
+                                    ),
+                                    snapshot.data!.docs.length < 5
+                                        ? SlidableAction(
+                                            onPressed: (context) {
+                                              ScaffoldMessenger.of(
+                                                  context)
+                                                  .showSnackBar(                                              SnackBar(
+                                                content: Text(
+                                                  'Artikel tidak dapat dihapus!',
+                                                  style: GoogleFonts.poppins(
+                                                      fontWeight:
+                                                      FontWeight.w300),
+                                                ),
+                                                duration: Duration(seconds: 2),
+                                              ));
+
+                                            },
+                                            backgroundColor: Colors.grey,
+                                            foregroundColor: Colors.white,
+                                            icon: Icons.delete,
+                                            label: 'Edit',
+                                          )
+                                        : SlidableAction(
+                                            onPressed: (context) {
+                                              setState(() {
+                                                onDeleteCollection(ds.id);
+                                              });
+                                            },
+                                            backgroundColor: Colors.redAccent,
+                                            foregroundColor: Colors.white,
+                                            icon: Icons.delete,
+                                            label: 'Delete',
+                                          ),
+                                  ]),
                               child: Card(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,7 +141,7 @@ class _ArticlePageState extends State<ArticlePage> {
               }
             }),
         floatingActionButton: FloatingActionButton(
-          backgroundColor:  const Color(0xff0B607E),
+          backgroundColor: const Color(0xff0B607E),
           onPressed: () {
             Navigator.push(
               context,
