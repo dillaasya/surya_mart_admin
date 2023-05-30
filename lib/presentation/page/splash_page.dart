@@ -14,9 +14,9 @@ class SplashPage extends StatelessWidget {
           children: [
             Flexible(
                 child: Image.asset(
-                  'assets/images/logo-suryamart-new.png',
-                  width: 250,
-                ))
+              'assets/images/logo-suryamart-new.png',
+              width: 250,
+            ))
           ],
         ),
       ),

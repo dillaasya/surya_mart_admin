@@ -115,48 +115,48 @@ class _AddProductState extends State<AddProduct> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          actionsAlignment: MainAxisAlignment.center,
-          content: Text(
-            "Are you sure you want to exit the app?",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w300,
-              color: Colors.black,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: Text(
-                "Yes",
+              actionsAlignment: MainAxisAlignment.center,
+              content: Text(
+                "Are you sure you want to exit the app?",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-              child: Text(
-                "No",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              actions: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text(
+                    "Yes",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ));
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    "No",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
 
   @override
@@ -215,21 +215,22 @@ class _AddProductState extends State<AddProduct> {
                       key: _formKeyValue,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Center(
                             child: Container(
                               width: 100,
                               height: 100,
-                              margin: const EdgeInsets.only(top: 10, bottom: 10),
+                              margin:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.black),
                                 borderRadius: BorderRadius.circular(100),
                               ),
                               child: _imagePath != null
                                   ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(100),
-                                    child: Image.file(_imagePath!))
+                                      borderRadius: BorderRadius.circular(100),
+                                      child: Image.file(_imagePath!))
                                   : TextButton(
                                       child: const Icon(
                                         Icons.add_a_photo,
@@ -244,10 +245,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Product name',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Product name',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8, bottom: 20),
                             child: TextFormField(
@@ -262,12 +263,12 @@ class _AddProductState extends State<AddProduct> {
                                 }
                               },
                               inputFormatters: [
-                                FilteringTextInputFormatter.allow(RegExp('[a-zA-Z|\\ ]')),
+                                FilteringTextInputFormatter.allow(
+                                    RegExp('[a-zA-Z|\\ ]')),
                               ],
                               style: GoogleFonts.poppins(),
                               controller: nameController,
                               decoration: InputDecoration(
-                                
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                   borderSide: const BorderSide(
@@ -302,10 +303,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Description',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Description',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8, bottom: 20),
                             child: TextFormField(
@@ -355,10 +356,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Price',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Price',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 10, bottom: 20),
                             child: TextFormField(
@@ -373,11 +374,16 @@ class _AddProductState extends State<AddProduct> {
                                 LengthLimitingTextInputFormatter(7),
                                 FilteringTextInputFormatter.digitsOnly
                               ],
-                              onChanged: (val){
-                                if (val.length > 0) {
-                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                              onChanged: (val) {
+                                if (val.isNotEmpty) {
+                                  if (val.characters.characterAt(0) ==
+                                          Characters("0") &&
+                                      val.length > 1) {
                                     stockController.text = val.substring(1);
-                                    stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                    stockController.selection =
+                                        TextSelection.collapsed(
+                                            offset:
+                                                stockController.text.length);
                                   }
                                 }
                               },
@@ -419,10 +425,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Stock',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Stock',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8, bottom: 20),
                             child: TextFormField(
@@ -437,14 +443,18 @@ class _AddProductState extends State<AddProduct> {
                                 LengthLimitingTextInputFormatter(4),
                                 FilteringTextInputFormatter.digitsOnly
                               ],
-                              onChanged: (val){
-                                if (val.length > 0) {
-                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                              onChanged: (val) {
+                                if (val.isNotEmpty) {
+                                  if (val.characters.characterAt(0) ==
+                                          Characters("0") &&
+                                      val.length > 1) {
                                     stockController.text = val.substring(1);
-                                    stockController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                    stockController.selection =
+                                        TextSelection.collapsed(
+                                            offset:
+                                                stockController.text.length);
                                   }
                                 }
-
                               },
                               style: GoogleFonts.poppins(),
                               controller: stockController,
@@ -484,10 +494,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Weight (gr/ml)',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Weight (gr/ml)',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           Padding(
                             padding: const EdgeInsets.only(top: 8, bottom: 20),
                             child: TextFormField(
@@ -502,11 +512,16 @@ class _AddProductState extends State<AddProduct> {
                                 LengthLimitingTextInputFormatter(4),
                                 FilteringTextInputFormatter.digitsOnly,
                               ],
-                              onChanged: (val){
-                                if (val.length > 0) {
-                                  if(val.characters.characterAt(0) == Characters("0") && val.length > 1){
+                              onChanged: (val) {
+                                if (val.isNotEmpty) {
+                                  if (val.characters.characterAt(0) ==
+                                          Characters("0") &&
+                                      val.length > 1) {
                                     weightController.text = val.substring(1);
-                                    weightController.selection = TextSelection.collapsed(offset: stockController.text.length);
+                                    weightController.selection =
+                                        TextSelection.collapsed(
+                                            offset:
+                                                stockController.text.length);
                                   }
                                 }
                               },
@@ -548,10 +563,10 @@ class _AddProductState extends State<AddProduct> {
                             ),
                           ),
                           Text(
-                              'Category',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w300),
-                            ),
+                            'Category',
+                            style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w300),
+                          ),
                           FutureBuilder(
                             future: getListCategory(),
                             builder: (context, snapshot) {
@@ -563,8 +578,8 @@ class _AddProductState extends State<AddProduct> {
                                 var x = snapshot.data;
                                 //var y= x!.map((e) => e.name);
                                 return Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 8, bottom: 20),
+                                  padding:
+                                      const EdgeInsets.only(top: 8, bottom: 20),
                                   child: DropdownButtonFormField<String>(
                                     icon: Padding(
                                       padding:
@@ -624,7 +639,11 @@ class _AddProductState extends State<AddProduct> {
                                         ?.map(
                                           (e) => DropdownMenuItem<String>(
                                             value: e.name,
-                                            child: Text(e.name, style: GoogleFonts.poppins(fontWeight: FontWeight.w300),),
+                                            child: Text(
+                                              e.name,
+                                              style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w300),
+                                            ),
                                           ),
                                         )
                                         .toList(),
@@ -649,42 +668,43 @@ class _AddProductState extends State<AddProduct> {
                             },
                           ),
                           Padding(
-                              padding: const EdgeInsets.only(top: 15),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: ElevatedButton(
-                                        style: ButtonStyle(
-                                            padding: MaterialStateProperty.all(
-                                                const EdgeInsets.only(
-                                                    top: 18, bottom: 18)),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<Color>(
-                                                    const Color(0XFFFFC33A)),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0),
-                                                    side: const BorderSide(color: Color(0XFFFFC33A))))),
-                                        child: Text(
-                                          'Save',
-                                          style: GoogleFonts.poppins(
-                                              color: Colors.grey.shade800,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        onPressed: () {
-                                          if (_formKeyValue.currentState!
-                                              .validate()) {
-                                            _uploadProduct();
-                                          }
-                                        }),
-                                  ),
-                                ],
-                              ),
+                            padding: const EdgeInsets.only(top: 15),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: ElevatedButton(
+                                      style: ButtonStyle(
+                                          padding: MaterialStateProperty.all(
+                                              const EdgeInsets.only(
+                                                  top: 18, bottom: 18)),
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  const Color(0XFFFFC33A)),
+                                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                              RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          18.0),
+                                                  side: const BorderSide(
+                                                      color:
+                                                          Color(0XFFFFC33A))))),
+                                      child: Text(
+                                        'Save',
+                                        style: GoogleFonts.poppins(
+                                            color: Colors.grey.shade800,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      onPressed: () {
+                                        if (_formKeyValue.currentState!
+                                            .validate()) {
+                                          _uploadProduct();
+                                        }
+                                      }),
+                                ),
+                              ],
                             ),
+                          ),
                         ],
                       ),
                     ),

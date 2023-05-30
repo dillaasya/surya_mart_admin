@@ -77,11 +77,10 @@ class _DetailPageState extends State<DetailPage> {
                               height: MediaQuery.of(context).size.width,
                               child: x?['image'] == null
                                   ? Icon(
-                                    Icons.image_not_supported_outlined,
-                                    size:
-                                        MediaQuery.of(context).size.width *
-                                            0.3,
-                                  )
+                                      Icons.image_not_supported_outlined,
+                                      size: MediaQuery.of(context).size.width *
+                                          0.3,
+                                    )
                                   : ClipRRect(
                                       child: Image.network(x?['image'] ?? '',
                                           fit: BoxFit.fill),
@@ -138,14 +137,15 @@ class _DetailPageState extends State<DetailPage> {
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text('Category',
-                                          style: GoogleFonts.poppins(
-                                            fontWeight: FontWeight.w500,
-
-                                          ),
-                                      maxLines: 1,
+                                      Text(
+                                        'Category',
+                                        style: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                        maxLines: 1,
                                         overflow: TextOverflow.clip,
                                       ),
                                       const SizedBox(
@@ -158,11 +158,14 @@ class _DetailPageState extends State<DetailPage> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 4,),
+                                const SizedBox(
+                                  width: 4,
+                                ),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Text('Stock',
                                           style: GoogleFonts.poppins(
@@ -178,7 +181,9 @@ class _DetailPageState extends State<DetailPage> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 4,),
+                                const SizedBox(
+                                  width: 4,
+                                ),
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,

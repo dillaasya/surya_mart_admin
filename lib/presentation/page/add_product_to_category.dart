@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 class AddProductToCategory extends StatefulWidget {
   final String catName;
 
-  const AddProductToCategory({required this.catName, Key? key}) : super(key: key);
+  const AddProductToCategory({required this.catName, Key? key})
+      : super(key: key);
 
   @override
   State<AddProductToCategory> createState() => _AddProductToCategoryState();
@@ -65,48 +66,48 @@ class _AddProductToCategoryState extends State<AddProductToCategory> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          actionsAlignment: MainAxisAlignment.center,
-          content: Text(
-            "Are you sure you want to exit the app?",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w300,
-              color: Colors.black,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: Text(
-                "Yes",
+              actionsAlignment: MainAxisAlignment.center,
+              content: Text(
+                "Are you sure you want to exit the app?",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-              child: Text(
-                "No",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              actions: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text(
+                    "Yes",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ));
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    "No",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
 
   Future<AggregateQuerySnapshot> countProductInCategory() async {

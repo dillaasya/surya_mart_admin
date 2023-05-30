@@ -50,9 +50,13 @@ class CustomerPage extends StatelessWidget {
                               child: x.data()['profilePicture'] == ''
                                   ? Container(
                                       color: Colors.grey.shade300,
-                                child: const Icon(Icons.image_not_supported_outlined),
+                                      child: const Icon(
+                                          Icons.image_not_supported_outlined),
                                     )
-                                  : Image.network(x.data()['profilePicture'], fit: BoxFit.cover,),
+                                  : Image.network(
+                                      x.data()['profilePicture'],
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           ),
                           const SizedBox(

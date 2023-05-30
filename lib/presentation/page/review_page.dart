@@ -24,7 +24,7 @@ class ReviewPage extends StatelessWidget {
         body: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('reviews')
-          .orderBy('dateCreated', descending: true)
+              .orderBy('dateCreated', descending: true)
               .snapshots(),
           builder: (context, snapshot) {
             //print('nilai uid sekaang : ${Auth().currentUser!.uid}');

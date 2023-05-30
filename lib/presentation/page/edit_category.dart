@@ -26,50 +26,50 @@ class _EditCategoryState extends State<EditCategory> {
     return showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          actionsAlignment: MainAxisAlignment.center,
-          content: Text(
-            "Are you sure you want to exit the app?",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w300,
-              color: Colors.black,
-            ),
-            textAlign: TextAlign.center,
-          ),
-          actions: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: Text(
-                "Yes",
+              actionsAlignment: MainAxisAlignment.center,
+              content: Text(
+                "Are you sure you want to exit the app?",
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w300,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
+                textAlign: TextAlign.center,
               ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:  const Color(0xff0B607E),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-              child: Text(
-                "No",
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
+              actions: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text(
+                    "Yes",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ));
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff0B607E),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text(
+                    "No",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
-  
+
   setName() {
     setState(() {
       newName = nameController.text;
@@ -92,14 +92,11 @@ class _EditCategoryState extends State<EditCategory> {
             isEqualTo:
                 (widget.category!.data() as Map<String, dynamic>)["name"])
         .get()
-        .then(
-          (value) {
-             for (var element in value.docs) {
-               updateCategoryProduct(element.id);
-             }
-          }
-        )
-        .whenComplete(() => category.doc(id).update({
+        .then((value) {
+      for (var element in value.docs) {
+        updateCategoryProduct(element.id);
+      }
+    }).whenComplete(() => category.doc(id).update({
               'name': newName,
               'dateModified': FieldValue.serverTimestamp(),
             }));
@@ -119,7 +116,7 @@ class _EditCategoryState extends State<EditCategory> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
   }
 
@@ -143,134 +140,140 @@ class _EditCategoryState extends State<EditCategory> {
               }
             },
             child: isLoading
-                  ? const Scaffold(
+                ? const Scaffold(
                     body: Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      child: CircularProgressIndicator(),
+                    ),
                   )
-                  : Scaffold(
+                : Scaffold(
                     appBar: AppBar(
-                  backgroundColor: Colors.white,
-                  iconTheme: const IconThemeData(color: Colors.black),
-                  elevation: 0,
-                  title: Text('Edit Category',
-                      style: GoogleFonts.poppins(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                          fontSize: 16)),
-                ),
-              body: SingleChildScrollView(
+                      backgroundColor: Colors.white,
+                      iconTheme: const IconThemeData(color: Colors.black),
+                      elevation: 0,
+                      title: Text('Edit Category',
+                          style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black,
+                              fontSize: 16)),
+                    ),
+                    body: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.all(20),
                         child: Form(
                             key: _formKeyValue,
                             autovalidateMode: AutovalidateMode.always,
                             child: Column(
-                              
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                              'Category name',
-                              style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w400),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 8, bottom: 20),
-                              child: TextFormField(
-                                validator: (value) {
-                                  if (value!.isNotEmpty && value.length > 2) {
-                                    return null;
-                                  } else if (value.length < 5 &&
-                                      value.isNotEmpty) {
-                                    return 'Your category name is too short!';
-                                  } else {
-                                    return 'It can\'t be empty!';
-                                  }
-                                },
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.allow(RegExp('[a-zA-Z|\\ ]')),
-                                  LengthLimitingTextInputFormatter(25),
-                                ],
-
-                                style: GoogleFonts.poppins(),
-                                controller: nameController,
-                                decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.deepOrangeAccent,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.black,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.red,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    borderSide: const BorderSide(
-                                      color: Colors.red,
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  contentPadding: const EdgeInsets.only(
-                                      left: 24, top: 18, bottom: 18, right: 24),
+                                  'Category name',
+                                  style: GoogleFonts.poppins(
+                                      fontWeight: FontWeight.w400),
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 15),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: ElevatedButton(
-                                        style: ButtonStyle(
-                                            padding: MaterialStateProperty.all(
-                                                const EdgeInsets.only(
-                                                    top: 18, bottom: 18)),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<Color>(
-                                                    const Color(0XFFFFC33A)),
-                                            shape: MaterialStateProperty.all<
-                                                    RoundedRectangleBorder>(
-                                                RoundedRectangleBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            18.0),
-                                                    side: const BorderSide(color: Color(0XFFFFC33A))))),
-                                        child: Text(
-                                          'Save',
-                                          style: GoogleFonts.poppins(
-                                              color: Colors.grey.shade800,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 8, bottom: 20),
+                                  child: TextFormField(
+                                    validator: (value) {
+                                      if (value!.isNotEmpty &&
+                                          value.length > 2) {
+                                        return null;
+                                      } else if (value.length < 5 &&
+                                          value.isNotEmpty) {
+                                        return 'Your category name is too short!';
+                                      } else {
+                                        return 'It can\'t be empty!';
+                                      }
+                                    },
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp('[a-zA-Z|\\ ]')),
+                                      LengthLimitingTextInputFormatter(25),
+                                    ],
+                                    style: GoogleFonts.poppins(),
+                                    controller: nameController,
+                                    decoration: InputDecoration(
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.deepOrangeAccent,
+                                          width: 1.0,
                                         ),
-                                        onPressed: () {
-                                          if (_formKeyValue.currentState!
-                                              .validate()) {
-                                            saveEdit();
-                                          }
-                                        }),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.black,
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.red,
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(18.0),
+                                        borderSide: const BorderSide(
+                                          color: Colors.red,
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      contentPadding: const EdgeInsets.only(
+                                          left: 24,
+                                          top: 18,
+                                          bottom: 18,
+                                          right: 24),
+                                    ),
                                   ),
-                                ],
-                              ),
-                            ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 15),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton(
+                                            style: ButtonStyle(
+                                                padding: MaterialStateProperty.all(
+                                                    const EdgeInsets.only(
+                                                        top: 18, bottom: 18)),
+                                                backgroundColor: MaterialStateProperty.all<Color>(
+                                                    const Color(0XFFFFC33A)),
+                                                shape: MaterialStateProperty.all<
+                                                        RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(
+                                                            18.0),
+                                                        side: const BorderSide(
+                                                            color: Color(0XFFFFC33A))))),
+                                            child: Text(
+                                              'Save',
+                                              style: GoogleFonts.poppins(
+                                                  color: Colors.grey.shade800,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                            onPressed: () {
+                                              if (_formKeyValue.currentState!
+                                                  .validate()) {
+                                                saveEdit();
+                                              }
+                                            }),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             )),
                       ),
                     ),
-            )));
+                  )));
   }
 }

@@ -79,8 +79,9 @@ class _OrderPageState extends State<OrderPage> {
                                     Text(
                                       x.data()['statusOrder'],
                                       style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500,
-                                          color:  const Color(0xff0B607E),),
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xff0B607E),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -125,12 +126,14 @@ class _OrderPageState extends State<OrderPage> {
                                               Text(
                                                 'Rp ${first['price']} ',
                                                 style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w300),
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                               ),
                                               Text(
                                                 'x${first['qty']}',
                                                 style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w300),
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                               ),
                                             ],
                                           ),
@@ -224,7 +227,7 @@ class _OrderPageState extends State<OrderPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          color:  const Color(0xff0B607E),
+                                          color: const Color(0xff0B607E),
                                         ),
                                         height: 50,
                                         child: Row(
@@ -335,8 +338,9 @@ class _OrderPageState extends State<OrderPage> {
                                     Text(
                                       x.data()['statusOrder'],
                                       style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500,
-                                          color:  const Color(0xff0B607E),),
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xff0B607E),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -381,12 +385,14 @@ class _OrderPageState extends State<OrderPage> {
                                               Text(
                                                 'Rp ${first['price']} ',
                                                 style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w300),
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                               ),
                                               Text(
                                                 'x${first['qty']}',
                                                 style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w300),
+                                                    fontWeight:
+                                                        FontWeight.w300),
                                               ),
                                             ],
                                           ),
@@ -480,7 +486,7 @@ class _OrderPageState extends State<OrderPage> {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          color:  const Color(0xff0B607E),
+                                          color: const Color(0xff0B607E),
                                         ),
                                         height: 50,
                                         child: Row(
@@ -551,7 +557,7 @@ class _OrderPageState extends State<OrderPage> {
             },
             scrolledUnderElevation: 2.0,
             bottom: TabBar(
-              indicatorColor:  const Color(0xff0B607E),
+              indicatorColor: const Color(0xff0B607E),
               labelColor: Colors.black,
               unselectedLabelColor: Colors.grey,
               isScrollable: true,

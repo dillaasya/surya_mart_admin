@@ -59,7 +59,7 @@ class _DetailOrderState extends State<DetailOrder> {
                   Container(
                     decoration: const BoxDecoration(
                         border: Border(
-                          top: BorderSide(width: 5, color:  Color(0xff0B607E)),
+                          top: BorderSide(width: 5, color: Color(0xff0B607E)),
                         ),
                         color: Colors.white),
                     child: Padding(
@@ -222,16 +222,16 @@ class _DetailOrderState extends State<DetailOrder> {
                           child: Padding(
                             padding: const EdgeInsets.all(4),
                             child: Theme(
-                              data: ThemeData().copyWith(dividerColor: Colors.transparent),
+                              data: ThemeData()
+                                  .copyWith(dividerColor: Colors.transparent),
                               child: ExpansionTile(
-
                                 iconColor: Colors.black,
                                 expandedAlignment: Alignment.topLeft,
                                 title: Text(
                                   'Ulasan',
                                   style: GoogleFonts.poppins(
-                                      fontWeight: FontWeight.w500,
-                                  color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black,
                                   ),
                                 ),
                                 children: [
@@ -254,8 +254,10 @@ class _DetailOrderState extends State<DetailOrder> {
                                             ConnectionState.active) {
                                           if (snapshot.data!.docs.isNotEmpty) {
                                             return Column(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 RatingBar.builder(
                                                   ignoreGestures: true,
@@ -264,19 +266,24 @@ class _DetailOrderState extends State<DetailOrder> {
                                                   allowHalfRating: true,
                                                   itemCount: 5,
                                                   itemSize: 25,
-                                                  itemBuilder: (context, _) => const Icon(
+                                                  itemBuilder: (context, _) =>
+                                                      const Icon(
                                                     Icons.star,
                                                     color: Colors.amber,
                                                   ),
-                                                  onRatingUpdate: (double value) {
+                                                  onRatingUpdate:
+                                                      (double value) {
                                                     null;
                                                   },
                                                 ),
-                                                const SizedBox(height: 4,),
+                                                const SizedBox(
+                                                  height: 4,
+                                                ),
                                                 Text(
                                                   x.data()['review'],
                                                   style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w300),
+                                                      fontWeight:
+                                                          FontWeight.w300),
                                                   textAlign: TextAlign.justify,
                                                 ),
                                               ],

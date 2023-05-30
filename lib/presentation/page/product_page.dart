@@ -74,11 +74,11 @@ class _ProductPageState extends State<ProductPage> {
                                 SlidableAction(
                                   onPressed: (context) {
                                     setState(() {
-                                      if ((ds!.data() as Map<String,
-                                              dynamic>)["image"] !=
+                                      if ((ds!.data() as Map<String, dynamic>)[
+                                              "image"] !=
                                           null) {
-                                        onDeleteImage((ds.data() as Map<
-                                                String, dynamic>)["image"]
+                                        onDeleteImage((ds.data() as Map<String,
+                                                dynamic>)["image"]
                                             .toString());
                                         onDeleteCollection(ds.id);
                                       } else {
@@ -93,17 +93,18 @@ class _ProductPageState extends State<ProductPage> {
                                 ),
                               ]),
                           child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DetailPage(
-                                          idProduct: ds!.id,
-                                          stockProduct: ds['stock'],
-                                          category: ds['category'])),
-                                );
-                              },
-                              child: ProductCard(ds: ds),),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailPage(
+                                        idProduct: ds!.id,
+                                        stockProduct: ds['stock'],
+                                        category: ds['category'])),
+                              );
+                            },
+                            child: ProductCard(ds: ds),
+                          ),
                         );
                       });
                 } else {

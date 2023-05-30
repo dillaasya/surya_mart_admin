@@ -72,18 +72,17 @@ class _ArticlePageState extends State<ArticlePage> {
                                     snapshot.data!.docs.length < 5
                                         ? SlidableAction(
                                             onPressed: (context) {
-                                              ScaffoldMessenger.of(
-                                                  context)
-                                                  .showSnackBar(                                              SnackBar(
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(SnackBar(
                                                 content: Text(
                                                   'Artikel tidak dapat dihapus!',
                                                   style: GoogleFonts.poppins(
                                                       fontWeight:
-                                                      FontWeight.w300),
+                                                          FontWeight.w300),
                                                 ),
-                                                duration: Duration(seconds: 2),
+                                                duration:
+                                                    const Duration(seconds: 2),
                                               ));
-
                                             },
                                             backgroundColor: Colors.grey,
                                             foregroundColor: Colors.white,

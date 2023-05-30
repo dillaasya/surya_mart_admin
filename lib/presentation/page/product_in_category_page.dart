@@ -112,7 +112,7 @@ class _ProductInCategoryPageState extends State<ProductInCategoryPage> {
                     }
                   }),
               floatingActionButton: FloatingActionButton(
-                backgroundColor:  const Color(0xff0B607E),
+                backgroundColor: const Color(0xff0B607E),
                 onPressed: () {
                   Navigator.push(
                     context,
