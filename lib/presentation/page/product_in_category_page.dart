@@ -70,7 +70,7 @@ class _ProductInCategoryPageState extends State<ProductInCategoryPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(20),
                             child: Text(
-                              'Belum ada produk! klik ikon di pojok kanan bawah untuk menambahkan produk kedalam kategori',
+                              'No product yet! Click the icon in the bottom right corner to add products to a category',
                               style: GoogleFonts.poppins(
                                 fontWeight: FontWeight.w400,
                               ),
@@ -92,9 +92,72 @@ class _ProductInCategoryPageState extends State<ProductInCategoryPage> {
                                       children: [
                                         SlidableAction(
                                           onPressed: (context) {
-                                            setState(() {
-                                              updateCategoryProduct(ds!.id);
-                                            });
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  actionsAlignment:
+                                                  MainAxisAlignment.center,
+                                                  title: Text(
+                                                    "Warning!",
+                                                    style: GoogleFonts.poppins(
+                                                      fontWeight: FontWeight.w500,
+                                                      color: Colors.black,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  content: Text(
+                                                    "Are you sure you want to delete this product from \'${widget.catName}?\'",
+                                                    style: GoogleFonts.poppins(
+                                                      fontWeight: FontWeight.w300,
+                                                      color: Colors.black,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: const Color(0xff0B607E),
+                                                      ),
+                                                      onPressed: () {
+
+                                                        setState(() {
+                                                          updateCategoryProduct(ds!.id);
+                                                        });
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Text(
+                                                        "Yes",
+                                                        style:
+                                                        GoogleFonts.poppins(
+                                                          fontWeight:
+                                                          FontWeight.w300,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    ElevatedButton(
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: const Color(0xff0B607E),
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.of(context)
+                                                            .pop(false);
+                                                      },
+                                                      child: Text(
+                                                        "No",
+                                                        style:
+                                                        GoogleFonts.poppins(
+                                                          fontWeight:
+                                                          FontWeight.w300,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
                                           },
                                           backgroundColor: Colors.redAccent,
                                           foregroundColor: Colors.white,

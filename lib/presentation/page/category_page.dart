@@ -100,10 +100,73 @@ class _CategoryProductState extends State<CategoryPage> {
                                     ),
                                     SlidableAction(
                                       onPressed: (context) {
-                                        onDeleteCollection(
-                                            ds!.id,
-                                            (ds.data() as Map<String, dynamic>)[
-                                                "name"]);
+                                        showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return AlertDialog(
+                                              actionsAlignment:
+                                              MainAxisAlignment.center,
+                                              title: Text(
+                                                "Warning!",
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              content: Text(
+                                                "Are you sure you want to delete this category?",
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w300,
+                                                  color: Colors.black,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                              actions: [
+                                                ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    backgroundColor: const Color(0xff0B607E),
+                                                  ),
+                                                  onPressed: () {
+                                                    onDeleteCollection(
+                                                        ds!.id,
+                                                        (ds.data() as Map<String, dynamic>)[
+                                                        "name"]);
+                                                    Navigator.pop(context);
+                                                  },
+                                                  child: Text(
+                                                    "Yes",
+                                                    style:
+                                                    GoogleFonts.poppins(
+                                                      fontWeight:
+                                                      FontWeight.w300,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                                ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    backgroundColor: const Color(0xff0B607E),
+                                                  ),
+                                                  onPressed: () {
+                                                    Navigator.of(context)
+                                                        .pop(false);
+                                                  },
+                                                  child: Text(
+                                                    "No",
+                                                    style:
+                                                    GoogleFonts.poppins(
+                                                      fontWeight:
+                                                      FontWeight.w300,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+
                                       },
                                       backgroundColor: Colors.redAccent,
                                       foregroundColor: Colors.white,

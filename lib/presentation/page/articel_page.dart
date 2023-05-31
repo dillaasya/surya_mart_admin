@@ -75,7 +75,7 @@ class _ArticlePageState extends State<ArticlePage> {
                                               ScaffoldMessenger.of(context)
                                                   .showSnackBar(SnackBar(
                                                 content: Text(
-                                                  'Artikel tidak dapat dihapus!',
+                                                  'Articles cannot be deleted!',
                                                   style: GoogleFonts.poppins(
                                                       fontWeight:
                                                           FontWeight.w300),
@@ -91,9 +91,72 @@ class _ArticlePageState extends State<ArticlePage> {
                                           )
                                         : SlidableAction(
                                             onPressed: (context) {
-                                              setState(() {
-                                                onDeleteCollection(ds.id);
-                                              });
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return AlertDialog(
+                                                    actionsAlignment:
+                                                    MainAxisAlignment.center,
+                                                    title: Text(
+                                                      "Warning!",
+                                                      style: GoogleFonts.poppins(
+                                                        fontWeight: FontWeight.w500,
+                                                        color: Colors.black,
+                                                      ),
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                    content: Text(
+                                                      "Are you sure you want to delete this article?",
+                                                      style: GoogleFonts.poppins(
+                                                        fontWeight: FontWeight.w300,
+                                                        color: Colors.black,
+                                                      ),
+                                                      textAlign: TextAlign.center,
+                                                    ),
+                                                    actions: [
+                                                      ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+                                                          backgroundColor: const Color(0xff0B607E),
+                                                        ),
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            onDeleteCollection(ds.id);
+                                                          });
+                                                          Navigator.pop(context);
+                                                        },
+                                                        child: Text(
+                                                          "Yes",
+                                                          style:
+                                                          GoogleFonts.poppins(
+                                                            fontWeight:
+                                                            FontWeight.w300,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      ElevatedButton(
+                                                        style: ElevatedButton.styleFrom(
+                                                          backgroundColor: const Color(0xff0B607E),
+                                                        ),
+                                                        onPressed: () {
+                                                          Navigator.of(context)
+                                                              .pop(false);
+                                                        },
+                                                        child: Text(
+                                                          "No",
+                                                          style:
+                                                          GoogleFonts.poppins(
+                                                            fontWeight:
+                                                            FontWeight.w300,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+
                                             },
                                             backgroundColor: Colors.redAccent,
                                             foregroundColor: Colors.white,

@@ -73,18 +73,81 @@ class _ProductPageState extends State<ProductPage> {
                                 ),
                                 SlidableAction(
                                   onPressed: (context) {
-                                    setState(() {
-                                      if ((ds!.data() as Map<String, dynamic>)[
-                                              "image"] !=
-                                          null) {
-                                        onDeleteImage((ds.data() as Map<String,
-                                                dynamic>)["image"]
-                                            .toString());
-                                        onDeleteCollection(ds.id);
-                                      } else {
-                                        onDeleteCollection(ds.id);
-                                      }
-                                    });
+                                    showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          actionsAlignment:
+                                          MainAxisAlignment.center,
+                                          title: Text(
+                                            "Warning!",
+                                            style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w500,
+                                              color: Colors.black,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          content: Text(
+                                            "Are you sure you want to delete this product?",
+                                            style: GoogleFonts.poppins(
+                                              fontWeight: FontWeight.w300,
+                                              color: Colors.black,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                          actions: [
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: const Color(0xff0B607E),
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  if ((ds!.data() as Map<String, dynamic>)[
+                                                  "image"] !=
+                                                      null) {
+                                                    onDeleteImage((ds.data() as Map<String,
+                                                        dynamic>)["image"]
+                                                        .toString());
+                                                    onDeleteCollection(ds.id);
+                                                  } else {
+                                                    onDeleteCollection(ds.id);
+                                                  }
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text(
+                                                "Yes",
+                                                style:
+                                                GoogleFonts.poppins(
+                                                  fontWeight:
+                                                  FontWeight.w300,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                            ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: const Color(0xff0B607E),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.of(context)
+                                                    .pop(false);
+                                              },
+                                              child: Text(
+                                                "No",
+                                                style:
+                                                GoogleFonts.poppins(
+                                                  fontWeight:
+                                                  FontWeight.w300,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+
                                   },
                                   backgroundColor: Colors.redAccent,
                                   foregroundColor: Colors.white,
