@@ -58,11 +58,8 @@ class _OrderPageState extends State<OrderPage> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return DetailOrder(
-                                    idUser: x.data()['userId'],
-                                    listCart: x.data()['productItem'],
-                                    status: x.data()['statusOrder'],
                                     idOrder: x.id,
-                                    isReviewed: x.data()['isReviewed']);
+                                );
                               }));
                             },
                             child: Column(
@@ -147,7 +144,7 @@ class _OrderPageState extends State<OrderPage> {
                                         const Divider(),
                                         Center(
                                           child: Text(
-                                            'Tampilkan produk lainnya',
+                                            'Show more products',
                                             style: GoogleFonts.poppins(
                                                 fontWeight: FontWeight.w300),
                                           ),
@@ -160,13 +157,13 @@ class _OrderPageState extends State<OrderPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '${z.length.toString()} produk',
+                                      '${z.length.toString()} products',
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w300),
                                     ),
                                     Row(children: [
                                       Text(
-                                        'Total Belanja ',
+                                        'Total Spend ',
                                         style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.w300),
                                       ),
@@ -189,7 +186,7 @@ class _OrderPageState extends State<OrderPage> {
                                     children: [
                                       const Divider(),
                                       Text(
-                                        'Belum diulas',
+                                        'No Reviews',
                                         style: GoogleFonts.poppins(
                                             color: Colors.grey.shade800,
                                             fontSize: 15,
@@ -204,7 +201,7 @@ class _OrderPageState extends State<OrderPage> {
                                     children: [
                                       const Divider(),
                                       Text(
-                                        'Sudah diulas',
+                                        'Reviewed',
                                         style: GoogleFonts.poppins(
                                             color: Colors.yellow.shade800,
                                             fontSize: 15,
@@ -260,7 +257,7 @@ class _OrderPageState extends State<OrderPage> {
                 padding: const EdgeInsets.all(20),
                 child: Center(
                   child: Text(
-                    'Belum ada riwayat pembelian',
+                    'No purchase history',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
                     ),
@@ -317,11 +314,8 @@ class _OrderPageState extends State<OrderPage> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return DetailOrder(
-                                    idUser: x.data()['userId'],
-                                    listCart: x.data()['productItem'],
-                                    status: x.data()['statusOrder'],
                                     idOrder: x.id,
-                                    isReviewed: x.data()['isReviewed']);
+                                );
                               }));
                             },
                             child: Column(
@@ -406,7 +400,7 @@ class _OrderPageState extends State<OrderPage> {
                                         const Divider(),
                                         Center(
                                           child: Text(
-                                            'Tampilkan produk lainnya',
+                                            'Show more products',
                                             style: GoogleFonts.poppins(
                                                 fontWeight: FontWeight.w300),
                                           ),
@@ -419,13 +413,13 @@ class _OrderPageState extends State<OrderPage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      '${z.length.toString()} produk',
+                                      '${z.length.toString()} products',
                                       style: GoogleFonts.poppins(
                                           fontWeight: FontWeight.w300),
                                     ),
                                     Row(children: [
                                       Text(
-                                        'Total Belanja ',
+                                        'Total Spend ',
                                         style: GoogleFonts.poppins(
                                             fontWeight: FontWeight.w300),
                                       ),
@@ -448,7 +442,7 @@ class _OrderPageState extends State<OrderPage> {
                                     children: [
                                       const Divider(),
                                       Text(
-                                        'Belum diulas',
+                                        'No Reviews',
                                         style: GoogleFonts.poppins(
                                             color: Colors.grey.shade800,
                                             fontSize: 15,
@@ -463,7 +457,7 @@ class _OrderPageState extends State<OrderPage> {
                                     children: [
                                       const Divider(),
                                       Text(
-                                        'Sudah diulas',
+                                        'Reviewed',
                                         style: GoogleFonts.poppins(
                                             color: Colors.yellow.shade800,
                                             fontSize: 15,
@@ -496,7 +490,7 @@ class _OrderPageState extends State<OrderPage> {
                                               CrossAxisAlignment.center,
                                           children: [
                                             Text(
-                                              'Kirimkan Pesanan',
+                                              'Deliver Order',
                                               style: GoogleFonts.poppins(
                                                   color: Colors.white,
                                                   fontSize: 15,
@@ -519,7 +513,7 @@ class _OrderPageState extends State<OrderPage> {
                 padding: const EdgeInsets.all(20),
                 child: Center(
                   child: Text(
-                    'Belum ada riwayat pembelian',
+                    'No purhcase history',
                     style: GoogleFonts.poppins(
                       fontWeight: FontWeight.w400,
                     ),

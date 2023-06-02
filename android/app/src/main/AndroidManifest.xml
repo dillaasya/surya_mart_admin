@@ -1,7 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.admin_surya_mart_v1">
     <!-- Provide required visibility configuration for API level 30 and above -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION" />
+
     <queries>
 
         <!-- If your app checks for call support -->
@@ -14,6 +20,7 @@
         android:label="Admin Suryamart"
         android:name="${applicationName}"
         android:icon="@mipmap/admin">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
