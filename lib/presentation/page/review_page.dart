@@ -27,7 +27,6 @@ class ReviewPage extends StatelessWidget {
               .orderBy('dateCreated', descending: true)
               .snapshots(),
           builder: (context, snapshot) {
-            //print('nilai uid sekaang : ${Auth().currentUser!.uid}');
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(
                 child: CircularProgressIndicator(),
@@ -183,7 +182,7 @@ class ReviewPage extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Center(
                     child: Text(
-                      'Belum ada review',
+                      'No Reviews',
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400,
                       ),
