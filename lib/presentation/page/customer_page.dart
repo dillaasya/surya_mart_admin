@@ -56,13 +56,17 @@ class CustomerPage extends StatelessWidget {
                                   : Image.network(
                                       x.data()['profilePicture'],
                                       fit: BoxFit.cover,
-                                errorBuilder: (context, error, stackTrace) {
-                                  return Center(
-                                    child: Text('No Internet',style: GoogleFonts.poppins(
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: 6),),
-                                  );
-                                },
+                                      errorBuilder:
+                                          (context, error, stackTrace) {
+                                        return Center(
+                                          child: Text(
+                                            'No Internet',
+                                            style: GoogleFonts.poppins(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 6),
+                                          ),
+                                        );
+                                      },
                                     ),
                             ),
                           ),

@@ -142,7 +142,7 @@ class _DetailOrderState extends State<DetailOrder> {
 
   pw.Widget _contentHeader(pw.Context context) {
     return pw.Padding(
-      padding: pw.EdgeInsets.only(top: 20),
+      padding: const pw.EdgeInsets.only(top: 20),
       child: pw.Column(children: [
         pw.Row(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
           pw.Text('Invoice To : '),
@@ -180,9 +180,9 @@ class _DetailOrderState extends State<DetailOrder> {
     return pw.TableHelper.fromTextArray(
       border: null,
       cellAlignment: pw.Alignment.centerLeft,
-      headerDecoration: pw.BoxDecoration(
+      headerDecoration: const pw.BoxDecoration(
         color: PdfColors.grey200,
-        borderRadius: const pw.BorderRadius.all(pw.Radius.circular(2)),
+        borderRadius: pw.BorderRadius.all(pw.Radius.circular(2)),
         //color: baseColor,
       ),
       headerHeight: 25,
@@ -197,14 +197,13 @@ class _DetailOrderState extends State<DetailOrder> {
         6: pw.Alignment.centerRight,
       },
       columnWidths: {
-        0: pw.FlexColumnWidth(3),
-        1: pw.FlexColumnWidth(3),
-        2: pw.FlexColumnWidth(2),
-        3: pw.FlexColumnWidth(2),
-        4: pw.FlexColumnWidth(1),
-        5: pw.FlexColumnWidth(2),
-        6: pw.FlexColumnWidth(2),
-
+        0: const pw.FlexColumnWidth(3),
+        1: const pw.FlexColumnWidth(3),
+        2: const pw.FlexColumnWidth(2),
+        3: const pw.FlexColumnWidth(2),
+        4: const pw.FlexColumnWidth(1),
+        5: const pw.FlexColumnWidth(2),
+        6: const pw.FlexColumnWidth(2),
       },
       headerStyle: pw.TextStyle(
         //color: _baseTextColor,
@@ -215,7 +214,7 @@ class _DetailOrderState extends State<DetailOrder> {
         //color: _darkColor,
         fontSize: 10,
       ),
-      rowDecoration: pw.BoxDecoration(
+      rowDecoration: const pw.BoxDecoration(
         border: pw.Border(
           bottom: pw.BorderSide(
             //color: accentColor,
@@ -247,14 +246,16 @@ class _DetailOrderState extends State<DetailOrder> {
             child: pw.Row(
                 mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                 children: [
-                  pw.Text('Total Price', style: pw.TextStyle(
-                    fontSize: 12,
-                    fontWeight: pw.FontWeight.bold
-                  ),),
-                  pw.Text('Rp ${totalPrice.toString()}',style: pw.TextStyle(
-                      fontSize: 12,
-                      fontWeight: pw.FontWeight.bold
-                  ),),
+                  pw.Text(
+                    'Total Price',
+                    style: pw.TextStyle(
+                        fontSize: 12, fontWeight: pw.FontWeight.bold),
+                  ),
+                  pw.Text(
+                    'Rp ${totalPrice.toString()}',
+                    style: pw.TextStyle(
+                        fontSize: 12, fontWeight: pw.FontWeight.bold),
+                  ),
                 ]),
           ),
           pw.SizedBox(height: 4),
@@ -262,14 +263,16 @@ class _DetailOrderState extends State<DetailOrder> {
             child: pw.Row(
                 mainAxisAlignment: pw.MainAxisAlignment.spaceBetween,
                 children: [
-                  pw.Text('Total Weight', style: pw.TextStyle(
-                      fontSize: 12,
-                      fontWeight: pw.FontWeight.bold
-                  ),),
-                  pw.Text('${totalWeight.toString()} gr/ml',style: pw.TextStyle(
-                      fontSize: 12,
-                      fontWeight: pw.FontWeight.bold
-                  ),),
+                  pw.Text(
+                    'Total Weight',
+                    style: pw.TextStyle(
+                        fontSize: 12, fontWeight: pw.FontWeight.bold),
+                  ),
+                  pw.Text(
+                    '${totalWeight.toString()} gr/ml',
+                    style: pw.TextStyle(
+                        fontSize: 12, fontWeight: pw.FontWeight.bold),
+                  ),
                 ]),
           ),
         ]),
@@ -364,7 +367,7 @@ class _DetailOrderState extends State<DetailOrder> {
                           children: [
                             ListView.builder(
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemCount: z.length,
                               itemBuilder: (context, index) {
                                 var y = z[index];
@@ -391,13 +394,23 @@ class _DetailOrderState extends State<DetailOrder> {
                                             child: y['picture'] == null
                                                 ? const Icon(Icons
                                                     .image_not_supported_outlined)
-                                                : Image.network(y['picture'], errorBuilder: (context, error, stackTrace) {
-                                              return Center(
-                                                child: Text('No Internet',style: GoogleFonts.poppins(
-                                                    fontWeight: FontWeight.w300,
-                                                    fontSize: 8),),
-                                              );
-                                            },),
+                                                : Image.network(
+                                                    y['picture'],
+                                                    errorBuilder: (context,
+                                                        error, stackTrace) {
+                                                      return Center(
+                                                        child: Text(
+                                                          'No Internet',
+                                                          style: GoogleFonts
+                                                              .poppins(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                  fontSize: 8),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
                                           ),
                                         ),
                                         const SizedBox(
@@ -496,7 +509,6 @@ class _DetailOrderState extends State<DetailOrder> {
                         ? Container(
                             color: Colors.white,
                             child: TextButton(
-
                               onPressed: () {
                                 _createInvoice();
                               },
@@ -600,8 +612,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                                   'review kosong');
                                             }
                                           } else {
-                                            return const Text(
-                                                'eror ');
+                                            return const Text('eror ');
                                           }
                                         },
                                       ),

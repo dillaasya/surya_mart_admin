@@ -78,7 +78,7 @@ class _ProductPageState extends State<ProductPage> {
                                       builder: (context) {
                                         return AlertDialog(
                                           actionsAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           title: Text(
                                             "Warning!",
                                             style: GoogleFonts.poppins(
@@ -98,15 +98,18 @@ class _ProductPageState extends State<ProductPage> {
                                           actions: [
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: const Color(0xff0B607E),
+                                                backgroundColor:
+                                                    const Color(0xff0B607E),
                                               ),
                                               onPressed: () {
                                                 setState(() {
-                                                  if ((ds!.data() as Map<String, dynamic>)[
-                                                  "image"] !=
+                                                  if ((ds!.data() as Map<String,
+                                                          dynamic>)["image"] !=
                                                       null) {
-                                                    onDeleteImage((ds.data() as Map<String,
-                                                        dynamic>)["image"]
+                                                    onDeleteImage((ds.data()
+                                                                as Map<String,
+                                                                    dynamic>)[
+                                                            "image"]
                                                         .toString());
                                                     onDeleteCollection(ds.id);
                                                   } else {
@@ -117,17 +120,16 @@ class _ProductPageState extends State<ProductPage> {
                                               },
                                               child: Text(
                                                 "Yes",
-                                                style:
-                                                GoogleFonts.poppins(
-                                                  fontWeight:
-                                                  FontWeight.w300,
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white,
                                                 ),
                                               ),
                                             ),
                                             ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: const Color(0xff0B607E),
+                                                backgroundColor:
+                                                    const Color(0xff0B607E),
                                               ),
                                               onPressed: () {
                                                 Navigator.of(context)
@@ -135,10 +137,8 @@ class _ProductPageState extends State<ProductPage> {
                                               },
                                               child: Text(
                                                 "No",
-                                                style:
-                                                GoogleFonts.poppins(
-                                                  fontWeight:
-                                                  FontWeight.w300,
+                                                style: GoogleFonts.poppins(
+                                                  fontWeight: FontWeight.w300,
                                                   color: Colors.white,
                                                 ),
                                               ),
@@ -147,7 +147,6 @@ class _ProductPageState extends State<ProductPage> {
                                         );
                                       },
                                     );
-
                                   },
                                   backgroundColor: Colors.redAccent,
                                   foregroundColor: Colors.white,

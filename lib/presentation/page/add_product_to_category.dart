@@ -116,7 +116,6 @@ class _AddProductToCategoryState extends State<AddProductToCategory> {
         .where('category', isEqualTo: "")
         .count()
         .get();
-    //print('Jumlah : ${countQuery.count}');
     return countQuery;
   }
 
@@ -125,7 +124,6 @@ class _AddProductToCategoryState extends State<AddProductToCategory> {
     await countProductInCategory().then((value) => hasil = value.count);
 
     _isChecked = List<bool>.filled(hasil, false);
-    //print('Hasil : $_isChecked');
   }
 
   @override
@@ -201,7 +199,6 @@ class _AddProductToCategoryState extends State<AddProductToCategory> {
                                     addProductToList(id);
 
                                     //selectedIdProduct?.add(ds.id);
-
                                   } else {
                                     removeProductFromList(ds.id);
                                   }

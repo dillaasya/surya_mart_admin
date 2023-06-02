@@ -105,7 +105,7 @@ class _CategoryProductState extends State<CategoryPage> {
                                           builder: (context) {
                                             return AlertDialog(
                                               actionsAlignment:
-                                              MainAxisAlignment.center,
+                                                  MainAxisAlignment.center,
                                               title: Text(
                                                 "Warning!",
                                                 style: GoogleFonts.poppins(
@@ -124,29 +124,33 @@ class _CategoryProductState extends State<CategoryPage> {
                                               ),
                                               actions: [
                                                 ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                    backgroundColor: const Color(0xff0B607E),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        const Color(0xff0B607E),
                                                   ),
                                                   onPressed: () {
                                                     onDeleteCollection(
                                                         ds!.id,
-                                                        (ds.data() as Map<String, dynamic>)[
-                                                        "name"]);
+                                                        (ds.data() as Map<
+                                                            String,
+                                                            dynamic>)["name"]);
                                                     Navigator.pop(context);
                                                   },
                                                   child: Text(
                                                     "Yes",
-                                                    style:
-                                                    GoogleFonts.poppins(
+                                                    style: GoogleFonts.poppins(
                                                       fontWeight:
-                                                      FontWeight.w300,
+                                                          FontWeight.w300,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                 ),
                                                 ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                    backgroundColor: const Color(0xff0B607E),
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        const Color(0xff0B607E),
                                                   ),
                                                   onPressed: () {
                                                     Navigator.of(context)
@@ -154,10 +158,9 @@ class _CategoryProductState extends State<CategoryPage> {
                                                   },
                                                   child: Text(
                                                     "No",
-                                                    style:
-                                                    GoogleFonts.poppins(
+                                                    style: GoogleFonts.poppins(
                                                       fontWeight:
-                                                      FontWeight.w300,
+                                                          FontWeight.w300,
                                                       color: Colors.white,
                                                     ),
                                                   ),
@@ -166,7 +169,6 @@ class _CategoryProductState extends State<CategoryPage> {
                                             );
                                           },
                                         );
-
                                       },
                                       backgroundColor: Colors.redAccent,
                                       foregroundColor: Colors.white,

@@ -97,48 +97,56 @@ class _ProductInCategoryPageState extends State<ProductInCategoryPage> {
                                               builder: (context) {
                                                 return AlertDialog(
                                                   actionsAlignment:
-                                                  MainAxisAlignment.center,
+                                                      MainAxisAlignment.center,
                                                   title: Text(
                                                     "Warning!",
                                                     style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.black,
                                                     ),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                   content: Text(
-                                                    "Are you sure you want to delete this product from \'${widget.catName}?\'",
+                                                    "Are you sure you want to delete this product from '${widget.catName}?'",
                                                     style: GoogleFonts.poppins(
-                                                      fontWeight: FontWeight.w300,
+                                                      fontWeight:
+                                                          FontWeight.w300,
                                                       color: Colors.black,
                                                     ),
                                                     textAlign: TextAlign.center,
                                                   ),
                                                   actions: [
                                                     ElevatedButton(
-                                                      style: ElevatedButton.styleFrom(
-                                                        backgroundColor: const Color(0xff0B607E),
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            const Color(
+                                                                0xff0B607E),
                                                       ),
                                                       onPressed: () {
-
                                                         setState(() {
-                                                          updateCategoryProduct(ds!.id);
+                                                          updateCategoryProduct(
+                                                              ds!.id);
                                                         });
                                                         Navigator.pop(context);
                                                       },
                                                       child: Text(
                                                         "Yes",
                                                         style:
-                                                        GoogleFonts.poppins(
+                                                            GoogleFonts.poppins(
                                                           fontWeight:
-                                                          FontWeight.w300,
+                                                              FontWeight.w300,
                                                           color: Colors.white,
                                                         ),
                                                       ),
                                                     ),
                                                     ElevatedButton(
-                                                      style: ElevatedButton.styleFrom(
-                                                        backgroundColor: const Color(0xff0B607E),
+                                                      style: ElevatedButton
+                                                          .styleFrom(
+                                                        backgroundColor:
+                                                            const Color(
+                                                                0xff0B607E),
                                                       ),
                                                       onPressed: () {
                                                         Navigator.of(context)
@@ -147,9 +155,9 @@ class _ProductInCategoryPageState extends State<ProductInCategoryPage> {
                                                       child: Text(
                                                         "No",
                                                         style:
-                                                        GoogleFonts.poppins(
+                                                            GoogleFonts.poppins(
                                                           fontWeight:
-                                                          FontWeight.w300,
+                                                              FontWeight.w300,
                                                           color: Colors.white,
                                                         ),
                                                       ),

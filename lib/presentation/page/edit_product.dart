@@ -358,7 +358,6 @@ class _EditPageState extends State<EditProduct> {
         });
       }
       //String fileName = DateTime.now().millisecondsSinceEpoch.toString();
-
     } else {
       if (_imagePath != null) {
         String fileName = DateTime.now().millisecondsSinceEpoch.toString();

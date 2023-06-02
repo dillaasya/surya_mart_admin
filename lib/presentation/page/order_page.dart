@@ -58,7 +58,7 @@ class _OrderPageState extends State<OrderPage> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return DetailOrder(
-                                    idOrder: x.id,
+                                  idOrder: x.id,
                                 );
                               }));
                             },
@@ -98,13 +98,23 @@ class _OrderPageState extends State<OrderPage> {
                                         child: first['picture'] == null
                                             ? const Icon(Icons
                                                 .image_not_supported_outlined)
-                                            : Image.network(first['picture'],errorBuilder: (context, error, stackTrace) {
-                                          return Center(
-                                            child: Text('No Internet',style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w300,
-                                                fontSize: 8),),
-                                          );
-                                        },),
+                                            : Image.network(
+                                                first['picture'],
+                                                errorBuilder: (context, error,
+                                                    stackTrace) {
+                                                  return Center(
+                                                    child: Text(
+                                                      'No Internet',
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              fontSize: 8),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                       ),
                                     ),
                                     const SizedBox(width: 8),
@@ -320,7 +330,7 @@ class _OrderPageState extends State<OrderPage> {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) {
                                 return DetailOrder(
-                                    idOrder: x.id,
+                                  idOrder: x.id,
                                 );
                               }));
                             },
@@ -360,13 +370,23 @@ class _OrderPageState extends State<OrderPage> {
                                         child: first['picture'] == null
                                             ? const Icon(Icons
                                                 .image_not_supported_outlined)
-                                            : Image.network(first['picture'], errorBuilder: (context, error, stackTrace) {
-                                          return Center(
-                                            child: Text('No Internet',style: GoogleFonts.poppins(
-                                                fontWeight: FontWeight.w300,
-                                                fontSize: 8),),
-                                          );
-                                        },),
+                                            : Image.network(
+                                                first['picture'],
+                                                errorBuilder: (context, error,
+                                                    stackTrace) {
+                                                  return Center(
+                                                    child: Text(
+                                                      'No Internet',
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w300,
+                                                              fontSize: 8),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
                                       ),
                                     ),
                                     const SizedBox(width: 8),

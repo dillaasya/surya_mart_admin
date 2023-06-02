@@ -96,47 +96,62 @@ class _ArticlePageState extends State<ArticlePage> {
                                                 builder: (context) {
                                                   return AlertDialog(
                                                     actionsAlignment:
-                                                    MainAxisAlignment.center,
+                                                        MainAxisAlignment
+                                                            .center,
                                                     title: Text(
                                                       "Warning!",
-                                                      style: GoogleFonts.poppins(
-                                                        fontWeight: FontWeight.w500,
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                         color: Colors.black,
                                                       ),
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                     ),
                                                     content: Text(
                                                       "Are you sure you want to delete this article?",
-                                                      style: GoogleFonts.poppins(
-                                                        fontWeight: FontWeight.w300,
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                        fontWeight:
+                                                            FontWeight.w300,
                                                         color: Colors.black,
                                                       ),
-                                                      textAlign: TextAlign.center,
+                                                      textAlign:
+                                                          TextAlign.center,
                                                     ),
                                                     actions: [
                                                       ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-                                                          backgroundColor: const Color(0xff0B607E),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0xff0B607E),
                                                         ),
                                                         onPressed: () {
                                                           setState(() {
-                                                            onDeleteCollection(ds.id);
+                                                            onDeleteCollection(
+                                                                ds.id);
                                                           });
-                                                          Navigator.pop(context);
+                                                          Navigator.pop(
+                                                              context);
                                                         },
                                                         child: Text(
                                                           "Yes",
-                                                          style:
-                                                          GoogleFonts.poppins(
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontWeight:
-                                                            FontWeight.w300,
+                                                                FontWeight.w300,
                                                             color: Colors.white,
                                                           ),
                                                         ),
                                                       ),
                                                       ElevatedButton(
-                                                        style: ElevatedButton.styleFrom(
-                                                          backgroundColor: const Color(0xff0B607E),
+                                                        style: ElevatedButton
+                                                            .styleFrom(
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0xff0B607E),
                                                         ),
                                                         onPressed: () {
                                                           Navigator.of(context)
@@ -144,10 +159,10 @@ class _ArticlePageState extends State<ArticlePage> {
                                                         },
                                                         child: Text(
                                                           "No",
-                                                          style:
-                                                          GoogleFonts.poppins(
+                                                          style: GoogleFonts
+                                                              .poppins(
                                                             fontWeight:
-                                                            FontWeight.w300,
+                                                                FontWeight.w300,
                                                             color: Colors.white,
                                                           ),
                                                         ),
@@ -156,7 +171,6 @@ class _ArticlePageState extends State<ArticlePage> {
                                                   );
                                                 },
                                               );
-
                                             },
                                             backgroundColor: Colors.redAccent,
                                             foregroundColor: Colors.white,
