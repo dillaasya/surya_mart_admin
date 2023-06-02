@@ -98,7 +98,6 @@ class _AddProductState extends State<AddProduct> {
     setState(() {
       isLoading = false;
     });
-    //showDialogSuccess();
     Navigator.pop(context);
   }
 

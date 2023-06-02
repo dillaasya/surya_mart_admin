@@ -1,3 +1,4 @@
+import 'package:admin_surya_mart_v1/data/model/product_in_cart_model.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
@@ -670,45 +671,5 @@ class _DetailOrderState extends State<DetailOrder> {
         ),
       ),
     );
-  }
-}
-
-class Product {
-  const Product(
-    this.productId,
-    this.productName,
-    this.price,
-    this.subTotal,
-    this.qty,
-    this.weight,
-    this.subWeight,
-  );
-
-  final String productId;
-  final String productName;
-  final int price;
-  final int subTotal;
-  final int qty;
-  final int weight;
-  final int subWeight;
-
-  String getIndex(int index) {
-    switch (index) {
-      case 0:
-        return productId;
-      case 1:
-        return productName;
-      case 2:
-        return price.toString();
-      case 3:
-        return weight.toString();
-      case 4:
-        return qty.toString();
-      case 5:
-        return subTotal.toString();
-      case 6:
-        return subWeight.toString();
-    }
-    return '';
   }
 }
