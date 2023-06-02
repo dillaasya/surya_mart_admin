@@ -56,6 +56,13 @@ class CustomerPage extends StatelessWidget {
                                   : Image.network(
                                       x.data()['profilePicture'],
                                       fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Center(
+                                    child: Text('No Internet',style: GoogleFonts.poppins(
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: 6),),
+                                  );
+                                },
                                     ),
                             ),
                           ),
@@ -108,7 +115,7 @@ class CustomerPage extends StatelessWidget {
             } else {
               return Center(
                 child: Text(
-                  'Belum ada customer yang terdaftar!',
+                  'No customers registered yet!',
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w400),
                 ),
               );

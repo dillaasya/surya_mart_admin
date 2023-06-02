@@ -32,6 +32,13 @@ class ProductCard extends StatelessWidget {
                     : Image.network(
                         (ds?.data() as Map<String, dynamic>)["image"] ?? '',
                         fit: BoxFit.scaleDown,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Center(
+                      child: Text('No Internet',style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 8),),
+                    );
+                  },
                       ),
               ),
             ),

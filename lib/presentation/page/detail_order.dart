@@ -391,7 +391,13 @@ class _DetailOrderState extends State<DetailOrder> {
                                             child: y['picture'] == null
                                                 ? const Icon(Icons
                                                     .image_not_supported_outlined)
-                                                : Image.network(y['picture']),
+                                                : Image.network(y['picture'], errorBuilder: (context, error, stackTrace) {
+                                              return Center(
+                                                child: Text('No Internet',style: GoogleFonts.poppins(
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: 8),),
+                                              );
+                                            },),
                                           ),
                                         ),
                                         const SizedBox(
