@@ -1,14 +1,13 @@
-
 class Product {
   const Product(
-      this.productId,
-      this.productName,
-      this.price,
-      this.subTotal,
-      this.qty,
-      this.weight,
-      this.subWeight,
-      );
+    this.productId,
+    this.productName,
+    this.price,
+    this.subTotal,
+    this.qty,
+    this.weight,
+    this.subWeight,
+  );
 
   final String productId;
   final String productName;

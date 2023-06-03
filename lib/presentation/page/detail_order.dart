@@ -506,7 +506,8 @@ class _DetailOrderState extends State<DetailOrder> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    x!['statusOrder'] == 'SHIPPED' || x['statusOrder'] == 'SUCCEED'
+                    x!['statusOrder'] == 'SHIPPED' ||
+                            x['statusOrder'] == 'SUCCEED'
                         ? Container(
                             color: Colors.white,
                             child: TextButton(
