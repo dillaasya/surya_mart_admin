@@ -505,36 +505,9 @@ class _DetailOrderState extends State<DetailOrder> {
                         ),
                       ),
                     ),
+
                     const SizedBox(height: 8),
-                    x!['statusOrder'] == 'SHIPPED' ||
-                            x['statusOrder'] == 'SUCCEED'
-                        ? Container(
-                            color: Colors.white,
-                            child: TextButton(
-                              onPressed: () {
-                                _createInvoice();
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'Download Invoice',
-                                      style: GoogleFonts.poppins(
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    const Icon(
-                                      Icons.file_download,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                        : Container(),
-                    x['isReviewed']
+                    x!['isReviewed']
                         ? Container(
                             color: Colors.white,
                             child: Padding(
@@ -624,6 +597,36 @@ class _DetailOrderState extends State<DetailOrder> {
                               ),
                             ),
                           )
+                        : Container(),
+
+                    const SizedBox(height: 8),
+                    x['statusOrder'] == 'SHIPPED' ||
+                        x['statusOrder'] == 'SUCCEED'
+                        ? Container(
+                      color: Colors.white,
+                      child: TextButton(
+                        onPressed: () {
+                          _createInvoice();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Download Invoice',
+                                style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                              const Icon(
+                                Icons.file_download,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
                         : Container(),
                   ],
                 );
